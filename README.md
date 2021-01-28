@@ -1,2 +1,2 @@
 # Movie_Search
-A Movie finder website
+# A Progress Web Application Movie Database
