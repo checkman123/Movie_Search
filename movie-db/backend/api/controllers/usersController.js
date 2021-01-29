@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 var mongoose = require("mongoose"),
   Users = mongoose.model("Users");
@@ -15,7 +16,14 @@ exports.GET_USERS = function (req, res) {
 // POST users
 // Desc: Register new user
 exports.CREATE_USER = function (req, res) {
-  const { first_name, last_name, email, password } = req.body;
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    status,
+    permission_level,
+  } = req.body;
 
   // Simple validation
   if (!first_name || !last_name || !email || !password) {
@@ -31,22 +39,37 @@ exports.CREATE_USER = function (req, res) {
       last_name,
       email,
       password,
+      status,
+      permission_level,
     });
 
-    // Create salt & hash
+    // Create salt & hash for password
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) throw err;
         newUser.password = hash;
         newUser.save().then((user) => {
-          res.json({
-            user: {
-              id: user.id,
-              last_name: user.last_name,
-              first_name: user.first_name,
-              email: user.email,
-            },
-          });
+          //Token, expire in 1 hour (3600 sec)
+          jwt.sign(
+            { id: user.id },
+            process.env.JWT_SECRET,
+            { expiresIn: 3600 },
+            (err, token) => {
+              if (err) throw err;
+
+              res.json({
+                token,
+                user: {
+                  id: user.id,
+                  last_name: user.last_name,
+                  first_name: user.first_name,
+                  email: user.email,
+                  status: user.status,
+                  permission_level: user.permission_level,
+                },
+              });
+            }
+          );
         });
       });
     });
