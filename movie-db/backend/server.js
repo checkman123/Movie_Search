@@ -4,18 +4,13 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 4000,
   mongoose = require('mongoose'),
-  Task = require('./api/models/todoListModel'), //created model loading here
+  Task = require('./api/models/movieDBModel'), //created model loading here
   bodyParser = require('body-parser');
-
-// request handlers
-app.get('/', (req, res) => {
-    res.send('IT WORKS!');
-});
  
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb'); 
+mongoose.connect('mongodb://localhost/users'); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
