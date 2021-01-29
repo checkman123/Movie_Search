@@ -1,44 +1,47 @@
-'use strict';
-var mongoose = require('mongoose');
+"use strict";
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
 
 var UserSchema = new Schema({
   first_name: {
     type: String,
-    required: 'Please enter the first name'
+    required: "Please enter the first name",
   },
   last_name: {
     type: String,
-    required: 'Please enter the last name'
+    required: "Please enter the last name",
   },
   created_date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   status: {
-    type: [{
+    type: [
+      {
         type: String,
-        enum: ['happy', 'sad', 'focus', 'none']
-    }],
-    default: ['none']
+        enum: ["happy", "sad", "focus", "none"],
+      },
+    ],
+    default: ["none"],
   },
-  email:{
-    type:String,
-    required: 'Please enter your email'
+  email: {
+    type: String,
+    required: "Please enter your email",
+    unique: true,
   },
   password: {
-    type:String,
-    required: 'Please enter your password'
+    type: String,
+    required: "Please enter your password",
   },
   permission_level: {
-    type: [{
+    type: [
+      {
         type: String,
-        enum: [ 'user', 'premium', 'admin']
-    }],
-    default:['user']
-  }
+        enum: ["user", "premium", "admin"],
+      },
+    ],
+    default: ["user"],
+  },
 });
 
-
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model("Users", UserSchema);
