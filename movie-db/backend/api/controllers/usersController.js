@@ -6,6 +6,7 @@ var mongoose = require("mongoose"),
 
 // GET users
 // Desc: Get all users
+// Access: Public
 exports.GET_USERS = function (req, res) {
   Users.find({}, function (err, users) {
     if (err) res.send(err);
@@ -15,6 +16,7 @@ exports.GET_USERS = function (req, res) {
 
 // POST users
 // Desc: Register new user
+// Access: Public
 exports.CREATE_USER = function (req, res) {
   const {
     first_name,
