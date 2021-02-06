@@ -20,4 +20,3 @@ ReactDom.render(
 );
 
 serviceWorkerRegistration.register();
-
