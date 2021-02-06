@@ -2,6 +2,7 @@
 // status(2xx) - Success
 // status(4xx) - Client error
 
+import mongoose from 'mongoose';
 import PostMessage from "../models/postMessage.js";
 
 export const getPosts = async (req, res) => {
@@ -28,3 +29,4 @@ export const createPosts = async (req, res) => {
   } catch (error) {}
   res.status(409).json({ message: error.message });
 };
+
