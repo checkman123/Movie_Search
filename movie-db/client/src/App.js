@@ -4,25 +4,27 @@ import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home/Home'
 import Example from "./components/Example/Example";
-import NavBar from "./components/Navagation/NavBar";
+import NavBar from "./components/Navigation/NavBar";
 
 const App = () => {
 
   return (
     <Router>
-      <div>
+      <Container>
         <NavBar/>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/example">
-              <Example />
-            </Route>
-          </Switch>
-        </div>
-      </div>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/example">
+            <Example />
+          </Route>
+        </Switch>
+
+
+          
+          
+      </Container>
     </Router>
   );
 };
