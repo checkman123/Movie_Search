@@ -1,31 +1,30 @@
 import React from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home/Home'
 import Example from "./components/Example/Example";
 import NavBar from "./components/Navigation/NavBar";
+import ExampleNav from "./components/Navigation/ExampleNav";
+import Auth from "./components/Auth/Auth";
 
 const App = () => {
 
   return (
-    <Router>
+    <BrowserRouter>
       <Container>
-        <NavBar/>
+        <ExampleNav/>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/example">
-            <Example />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/example" component={Example} />
+          <Route path="/auth" component={Auth} />
         </Switch>
 
 
           
           
       </Container>
-    </Router>
+    </BrowserRouter>
   );
 };
 
