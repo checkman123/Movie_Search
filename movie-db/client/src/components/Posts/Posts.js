@@ -10,7 +10,7 @@ const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts);
     const classes = useStyles();
 
-    console.log(posts);
+    //console.log(posts);
     return (
         // If there is no post then it will show a circle loading animation
         !posts.length ? <CircularProgress /> : (
