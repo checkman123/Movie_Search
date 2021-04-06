@@ -1,30 +1,45 @@
 import React, {useState } from 'react'
-import {Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core'
+import {Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
 import { GoogleLogin } from 'react-google-login'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import {signin, signup} from '../../actions/auth'
 
 import Input from './Input'
 import Icon from './icon'
 
 import useStyles from './style'
 
+const initialState = { firstName: '',
+                       lastName: '',
+                       email: '',
+                       password: '',
+                       confirmPassword: ''}
+
 export const Auth = () => {
     const classes = useStyles();
 
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
+    const [formData, setFormdata] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSubmit = () =>{
+    const handleSubmit = (e) =>{
+        e.preventDefault(); //Dont reload
         
+        if(isSignUp){
+            dispatch(signup(formData,history))
+        }else{
+            dispatch(signin(formData,history))
+        }
     }
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
-    const handleChange = () =>{
+    const handleChange = (e) =>{
+        setFormdata({... formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
         
     }
     const googleSuccess = async (res) =>{
@@ -47,7 +62,7 @@ export const Auth = () => {
 
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     return (
@@ -68,7 +83,7 @@ export const Auth = () => {
                             )
                         }
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
-                        <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
+                        <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
 
                         { //show on Sign Up page only
                             isSignUp && <Input name="confirmPassword"  label="Repeat Password" handleChange={handleChange} type="password"/> 
