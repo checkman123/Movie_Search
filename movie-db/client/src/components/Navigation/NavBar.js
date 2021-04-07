@@ -45,6 +45,7 @@ const ExampleNav = () => {
         <Typography component={Link} to="/" className={classes.heading} variant="h5" align="center">Movie Stack</Typography>
         <Typography component={Link} to="/example" className={classes.heading} variant="h5" align="center">Example</Typography>
         <Typography component={Link} to="/about" className={classes.heading} variant="h5" align="center">About</Typography>
+        <Typography component={Link} to="/about" className={classes.heading} variant="h5" align="center">My List</Typography>
       </div>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (

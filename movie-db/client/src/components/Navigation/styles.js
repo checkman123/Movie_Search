@@ -8,7 +8,9 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     background: '#2c2a3f',
     alignItems: 'center',
-    marginBottom: '15px'
+    marginBottom: '25px',
+    paddingLeft: '17vw',
+    paddingRight: '17vw'
   },
   heading: {
     color: '#ef981c',
@@ -16,7 +18,6 @@ export default makeStyles((theme) => ({
     marginRight: '2vw',
   },
   image: {
-    marginLeft: '15vw',
     marginRight: '10px'
   },
   toolbar: {
