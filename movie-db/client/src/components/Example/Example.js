@@ -9,7 +9,6 @@ const Example = () => {
   const classes = useStyles();
   return (
     <Container maxwidth="lg">
-      <ExampleNav/>
       <ExampleBoard/>
     </Container>
   );

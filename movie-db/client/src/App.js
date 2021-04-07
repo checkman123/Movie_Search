@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import { Container, AppBar, Typography, Grow, Grid, Box } from "@material-ui/core";
 import { BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home/Home'
@@ -12,8 +12,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Container>
-        <ExampleNav/>
+      <Box>
+        <NavBar/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/example" component={Example} />
@@ -23,7 +23,7 @@ const App = () => {
 
           
           
-      </Container>
+      </Box>
     </BrowserRouter>
   );
 };
