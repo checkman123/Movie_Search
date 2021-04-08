@@ -1,23 +1,26 @@
 import{ makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-    appBar: {
-      borderRadius: 15,
-      margin: '30px 0',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     heading: {
       color: 'rgba(0,183,255, 1)',
+      marginBottom: '15px'
     },
     image: {
       marginLeft: '15px',
     },
-  
+    searchBar: {
+      textAlign: 'center'
+    },
+    search: {
+      width: '100%',
+      position: 'relative',
+      display: 'flex',
+    },
+
+    
+    /* for phone version */
     [theme.breakpoints.down('sm')] : {
-      /* for phone version */
+      
       mainContainer: {
         flexDirection: "column-reverse"
       }
