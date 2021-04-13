@@ -1,23 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { Link, Route, Switch} from 'react-router-dom'
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import useStyles from './styles';
-import MovieInfo from '../MovieInfo/MovieInfo'
 
-const MovieCard = ({movie}) => {
+const MovieInfo = (props) => {
 
     const classes = useStyles();
 
-    var str = movie.title;
-    str = str.replace(/\s+/g, '-').toLowerCase();
+    console.log(props.location.state.movie);
+
+    const movie = props.location.state.movie;
   return (
     <>
-    <Link to={{
-      pathname: `/movie/${str}`,
-      state: { movie },
-      }}>
-     <div className={classes.card} key={movie.id}>
+    <div className={classes.card} key={movie.id}>
         <img className="card-image"
             src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
             alt={movie.title + ' poster'}
@@ -28,10 +22,10 @@ const MovieCard = ({movie}) => {
         <p><small>RATING: {movie.vote_average}</small></p>
         <p className="card-desc">{movie.overview}</p>
         </div>
-      </div>
-    </Link>
+    </div>
+    
     </>
   );
 };
 
-export default MovieCard;
+export default MovieInfo;

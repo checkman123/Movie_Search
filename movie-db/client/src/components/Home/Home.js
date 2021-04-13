@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 import dotenv from 'dotenv'
@@ -27,7 +28,7 @@ const Home = () => {
           const getUpcoming = axios.get(UPCOMING_API_URL);
           axios.all([getPopular, getUpcoming]).then(
             axios.spread((...allData) => {
-              console.log(allData);
+              //console.log(allData);
               setPopularMovies(allData[0].data.results);
               setUpComingMovies(allData[1].data.results);
             })
@@ -47,19 +48,22 @@ const Home = () => {
     <>
     <Typography className={classes.heading}variant="h5">Popular</Typography>
     <div className="card-list">
-      {popularMovies.filter(movie => movie.poster_path).map(movie => (
-
-          <MovieCard id={movie.id}  poster_path={movie.poster_path} title={movie.title} release_date={movie.release_date} vote_average={movie.vote_average} overview={movie.overview}/>
+      {popularMovies.map(movie => (
+          <MovieCard movie={movie}/>
       ))}
     </div> 
+
+    {/*upComingMovies.filter(movie => movie.poster_path).map(movie => (
+
+    <MovieCard movie={movie}/>
+    ))*/}
 
     <Typography className={classes.heading}variant="h5">upcoming</Typography>
     <div className="card-list">
-      {upComingMovies.filter(movie => movie.poster_path).map(movie => (
-
-          <MovieCard id={movie.id}  poster_path={movie.poster_path} title={movie.title} release_date={movie.release_date} vote_average={movie.vote_average} overview={movie.overview}/>
+      {upComingMovies.map(movie => (
+          <MovieCard movie={movie}/>
       ))}
-    </div> 
+      </div> 
 
     </>
   );

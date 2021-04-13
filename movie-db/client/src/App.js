@@ -7,6 +7,7 @@ import Example from "./components/Example/Example";
 import NavBar from "./components/Navigation/NavBar";
 import ExampleNav from "./components/Navigation/ExampleNav";
 import Auth from "./components/Auth/Auth";
+import MovieInfo from "./components/MovieInfo/MovieInfo";
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/example" component={Example} />
           <Route path="/auth" component={Auth} />
+          <Route path="/movieinfo" component={MovieInfo} />
         </Switch>
 
 
