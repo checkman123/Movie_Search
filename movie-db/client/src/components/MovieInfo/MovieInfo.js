@@ -4,6 +4,7 @@ import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { TextField, Button, Paper} from '@material-ui/core';
 
 import MovieCard from "../MovieCard/MovieCard"
+import VideoEmbed from "../VideoEmbed/VideoEmbed"
 
 import useStyles from './styles';
 
@@ -22,7 +23,6 @@ const MovieInfo = (props) => {
     
     const [videos, setVideos] = useState([]);
     const [similarMovies, setSimilarMovies] = useState([]);
-    const [videosUrl, setVideosUrl] = useState([]);
 
     //fetch videos and similar movies from moviedb api
     const fetchData = async () => {
@@ -37,14 +37,7 @@ const MovieInfo = (props) => {
           })
         )
 
-        var videoUrl = [];
-        for(var i=0; i<videos.length; i++){
-          if(videos[i].site === "Youtube"){
-            videoUrl.push("https://www.youtube.com/watch?v=" + videos.key);
-          }
-        }
 
-        setVideosUrl(videoUrl);
 
       } catch (error) {
         console.log(error);
@@ -72,7 +65,12 @@ const MovieInfo = (props) => {
         </div>
         <Button className="" variant="contained" color="primary" size="large" type="submit" fullWidth>ADD TO WATCHLIST</Button>
     </div>
-
+    <Typography className={classes.heading}variant="h5">Videos</Typography>
+    <div className="card-list">
+      {videos.map(video => (
+          <VideoEmbed video={video}/>
+      ))}
+    </div> 
     <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
     <div className="card-list">
       {similarMovies.map(movie => (
