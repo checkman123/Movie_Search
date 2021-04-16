@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import { TextField, Button, Paper} from '@material-ui/core';
+
+
 import useStyles from './styles';
 
 const MovieInfo = (props) => {
@@ -22,6 +25,7 @@ const MovieInfo = (props) => {
             <p><small>RATING: {movie.vote_average}</small></p>
             <p className="card-desc">{movie.overview}</p>
         </div>
+        <Button className="" variant="contained" color="primary" size="large" type="submit" fullWidth>ADD TO WATCHLIST</Button>
     </div>
     </>
   );

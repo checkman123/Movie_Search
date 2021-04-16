@@ -20,3 +20,7 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+
+export const fetchMovies = () => API.get('/movies');
+export const createMovie = (newMovie) => API.post('/movies', newMovie);
+export const deleteMovie = (id) => API.delete(`/movies/${id}`);
