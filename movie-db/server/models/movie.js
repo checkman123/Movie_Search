@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 
-const movie = mongoose.Schema({
+const movieInfo = mongoose.Schema({
   title: String,
   message: String,
   movie_id: Number,
+  overview: String,
 });
 
-const movie = mongoose.model("Movie", movie);
+const Movie = mongoose.model("Movie", movieInfo);
 
-export default movie;
+export default Movie;
