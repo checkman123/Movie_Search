@@ -1,19 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
-import dotenv from 'dotenv'
 
 import MovieCard from "../MovieCard/MovieCard"
 
 const Home = () => {
 
-  dotenv.config();
+
   const classes = useStyles();
 
-  const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
+  //const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const POPULAR_API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const UPCOMING_API_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
       //states- input query, movies
