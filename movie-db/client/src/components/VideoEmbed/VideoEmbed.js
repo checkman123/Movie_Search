@@ -1,13 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const VideoEmbed = ({ video }) => {
-
-    console.log("AHHHHH");
-    console.log(video);
-
-
-
 
     return (
         // if video isnt from Youtube, dont show
@@ -26,9 +19,5 @@ const VideoEmbed = ({ video }) => {
 
     );
 }
-
-VideoEmbed.propTypes = {
-  embedId: PropTypes.string.isRequired
-};
 
 export default VideoEmbed;
