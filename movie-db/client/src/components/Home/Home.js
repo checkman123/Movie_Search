@@ -11,8 +11,8 @@ const Home = () => {
 
   const classes = useStyles();
 
-  //const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
-  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+  const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
+  //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const POPULAR_API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const UPCOMING_API_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
       //states- input query, movies

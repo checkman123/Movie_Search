@@ -2,21 +2,31 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { TextField, Button, Paper} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
 import MovieCard from "../MovieCard/MovieCard"
 import VideoEmbed from "../VideoEmbed/VideoEmbed"
+import { createMovie } from '../../actions/movies';
 
 import useStyles from './styles';
 
 const MovieInfo = (props) => {
+  const [movieData, setMovieData] = useState({
+    title: '',
+    movie_id: 0,
+    overview: '',
+    poster_path: '',
+  })
 
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     console.log(props.location.state.movie);
 
     const movie = props.location.state.movie;
 
-    const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
+    const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
+    //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
     const GET_MOVIE_VIDEOS = `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=en-US`
     const GET_SIMILAR_MOVIES = `https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${API_KEY}&language=en-US&page=1`
 
