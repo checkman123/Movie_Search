@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const movieInfo = mongoose.Schema({
   title: String,
-  message: String,
   movie_id: Number,
   overview: String,
+  poster_path: String
 });
 
 const Movie = mongoose.model("Movie", movieInfo);
