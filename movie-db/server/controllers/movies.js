@@ -34,7 +34,12 @@ export const getMovie = async (req, res) => {
 
 export const createMovie = async (req, res) => {
     const movie = req.body;
+    const { title } = req.body;
 
+    const movieExist = await Movie.findOne({ title });
+
+    if (movieExist) return res.status(400).json({ message: "Movie already exists" });
+    
     const newMovie = new Movie({ ...movie})
 
     try {
