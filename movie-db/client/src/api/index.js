@@ -24,3 +24,7 @@ export const signUp = (formData) => API.post('/user/signup', formData);
 export const fetchMovies = () => API.get('/movies');
 export const createMovie = (newMovie) => API.post('/movies', newMovie);
 export const deleteMovie = (id) => API.delete(`/movies/${id}`);
+
+export const fetchMovieLists = (id) => API.get(`/movie-lists`);
+export const createMovieList = (newMovieList) => API.post('/movie-lists', newMovieList);
+export const deleteMovieList = (id) => API.delete(`/movie-lists/${id}`);
