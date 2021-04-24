@@ -1,52 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-import { TextField, Button, Paper} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import {getUsers, getUser} from '../../actions/userInfo'
 
 import useStyles from './styles';
 
+
 const UserProfile = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
-    const userInfo = useSelector((state) => state.user);
+    const userInfo = useSelector((state) => state.userInfo);
     const classes = useStyles();
 
-    const [popularMovies, setPopularMovies] = useState([]);
+    console.log(user.result._id);
+    const dispatch = useDispatch();
+  
+    useEffect(() =>{
+      dispatch(getUsers());
+      dispatch(getUser(user?.result?._id));
+    }, [dispatch])
 
-    const fetchData = async () => {
-      try {
-        const getPopular = axios.get("http://localhost:5000/user/60836f7ae2df2e0e7ceb0535");
-        axios.all([getPopular]).then(
-          axios.spread((...allData) => {
-            //console.log(allData);
-            setPopularMovies(allData[0].data);
-          })
-        )
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    // Use this path for picking one user instead of all user
+    // http://localhost:3000/user-info/608354c1349f10485441a92a
 
-    useEffect(() => {
-      fetchData();
-    }, []);
-
-    console.log(popularMovies);
-    
-  return (
-    <>
-
-        <div className="card-list">
-
-        </div> 
-        <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
-        <div className="card-list">
-
-        </div> 
-    </>
-  );
-};
+    console.log(userInfo);
+    return (
+        // If there is no post then it will show a circle loading animation
+        <div>
+          HIIHIHIHIHHI
+        </div>
+    );
+}
 
 export default UserProfile;

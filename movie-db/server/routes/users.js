@@ -1,7 +1,7 @@
 //GOES WITH CONTROLLER FOLDER POSTS
 import express from "express";
 
-import { signin, signup, getUser } from "../controllers/users.js";
+import { signin, signup } from "../controllers/users.js";
 
 const router = express.Router();
 
@@ -9,6 +9,5 @@ const router = express.Router();
 
 router.post('/signin',signin);
 router.post('/signup',signup);
-router.get('/:id', getUser);
 
 export default router;

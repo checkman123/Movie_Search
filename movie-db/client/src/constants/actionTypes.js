@@ -6,6 +6,7 @@ export const FETCH_ALL = 'FETCH_ALL';
 export const AUTH ='AUTH';
 export const LOGOUT ='LOGOUT';
 
+
 export const CREATE_MOVIE = 'CREATE_MOVIE';
 export const UPDATE_MOVIE = 'UPDATE_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
@@ -15,3 +16,6 @@ export const CREATE_MOVIE_LIST = 'CREATE_MOVIE_LIST';
 export const UPDATE_MOVIE_LIST = 'UPDATE_MOVIE_LIST';
 export const DELETE_MOVIE_LIST = 'DELETE_MOVIE_LIST';
 export const FETCH_ALL_MOVIE_LISTS = 'FETCH_ALL_MOVIE_LISTS';
+
+export const FETCH_ALL_USERS ='FETCH_ALL_USERS';
+export const FETCH_USER ='FETCH_USER';

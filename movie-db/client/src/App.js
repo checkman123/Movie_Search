@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/movie" component={MovieInfo} />
           <Route path="/movie-lists" component={UserMovieList} />
           <Route path="/movie-list" component={UserListMovies} />
-          <Route path="/user" component={UserProfile} />
+          <Route path="/user-info" component={UserProfile} />
         </Switch>
 
 
