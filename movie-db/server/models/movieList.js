@@ -5,6 +5,10 @@ const movieList = mongoose.Schema({
   user_list_id: {type: String, required: true},
   movie_id: [String],
   description: String,
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const MovieList = mongoose.model("MovieList", movieList);

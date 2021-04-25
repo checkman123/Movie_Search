@@ -10,7 +10,9 @@ const router = express.Router();
 
 export const getMovieLists = async (req, res) => { 
     try {
-        const movieLists = await MovieList.find();
+        const { id } = req.params;
+        const objectId = {user_list_id: id};
+        const movieLists = await MovieList.find(objectId);
                 
         res.status(200).json(movieLists);
     } catch (error) {

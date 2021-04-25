@@ -16,6 +16,9 @@ const ExampleNav = () => {
     const history = useHistory();
     const location = useLocation();
 
+    const getUser = JSON.parse(localStorage.getItem('profile'));
+    var userId;
+
     const logout = () => {
       dispatch({ type: "LOGOUT" })
 
@@ -35,8 +38,19 @@ const ExampleNav = () => {
         if(decodedToken.exp * 1000 < new Date().getTime()) logout();
       }
 
+      
+
       setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
+
+    //Check if user is login by us or Google
+    if(getUser){
+      if(getUser.result._id){
+        userId = getUser.result._id;
+      } else { 
+        userId = getUser.result.googleId;
+      }
+    }
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
@@ -45,7 +59,7 @@ const ExampleNav = () => {
         <Typography component={Link} to="/" className={classes.heading} variant="h5" align="center">Movie Stack</Typography>
         <Typography component={Link} to="/example" className={classes.heading} variant="h5" align="center">Example</Typography>
         <Typography component={Link} to="/about" className={classes.heading} variant="h5" align="center">About</Typography>
-        <Typography component={Link} to="/movie-lists" className={classes.heading} variant="h5" align="center">My List</Typography>
+        <Typography component={Link} to={`/movie-lists/${userId}`} className={classes.heading} variant="h5" align="center">My List</Typography>
         <Typography component={Link} to="/user-info" className={classes.heading} variant="h5" align="center">My Users</Typography>
       </div>
       <Toolbar className={classes.toolbar}>

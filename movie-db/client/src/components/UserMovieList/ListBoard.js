@@ -11,9 +11,21 @@ export const ListBoard = () => {
   const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    const user = JSON.parse(localStorage.getItem('profile'));
+    var userId;
+
+    //Check if user is login by us or Google
+    if(user){
+      if(user.result._id){
+        userId = user.result._id;
+      } else { 
+        userId = user.result.googleId;
+      }
+    }
   
     useEffect(() =>{
-      dispatch(getMovieLists());
+      dispatch(getMovieLists(userId));
     }, [currentId, dispatch])
     return (
       <Grow in>

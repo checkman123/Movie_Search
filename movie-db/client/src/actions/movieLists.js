@@ -6,10 +6,10 @@ import * as api from '../api';
 // Action Creators
 // Function that return action
 
-export const getMovieLists = () => async (dispatch) => {
+export const getMovieLists = (id) => async (dispatch) => {
     try{
         // Get response from API
-        const { data } = await api.fetchMovieLists();
+        const { data } = await api.fetchMovieLists(id);
 
         dispatch ({type: FETCH_ALL_MOVIE_LISTS, payload: data});
     }catch(error){

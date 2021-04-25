@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 
 import useStyles from './styles';
-import {createMovieList} from '../../actions/movieLists';
+import { createMovieList } from '../../actions/movieLists';
 
 //Get Current ID
 
@@ -20,7 +20,20 @@ const MovieListForm = ({ currentId, setCurrentId }) => {
     const list = useSelector((state) => currentId? state.lists.find((l) => l._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
+
     const user = JSON.parse(localStorage.getItem('profile'));
+    var userId;
+
+    //Check if user is login by us or Google
+    if(user){
+      if(user.result._id){
+        userId = user.result._id;
+      } else { 
+        userId = user.result.googleId;
+      }
+    }
+    
+    
 
     useEffect(() => {
         if(list) setListData(list);
@@ -29,12 +42,12 @@ const MovieListForm = ({ currentId, setCurrentId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); //not to get refresh in browser
 
-        dispatch(createMovieList({...listData, user_list_id: user?.result?.name}));
+        dispatch(createMovieList({...listData, user_list_id: userId}));
         clear();
 
       };
 
-      if(!user?.result?.name){
+      if(!user?.result?._id && !user?.result?.googleId){
         return (
           <Paper className={classes.paper}>
             <Typography variant="h6" align="center">
