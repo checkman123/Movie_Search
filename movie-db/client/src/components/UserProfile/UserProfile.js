@@ -13,12 +13,25 @@ const UserProfile = () => {
     const userInfo = useSelector((state) => state.userInfo);
     const classes = useStyles();
 
-    console.log(user.result._id);
+    var userId;
+
+    //Check if user is login by us or Google
+    if(user){
+      if(user.result._id){
+        userId = user.result._id;
+      } else { 
+        userId = user.result.googleId;
+      }
+    }
+
+
+
+
     const dispatch = useDispatch();
   
     useEffect(() =>{
       dispatch(getUsers());
-      dispatch(getUser(user?.result?._id));
+      dispatch(getUser(userId));
     }, [dispatch])
 
     // Use this path for picking one user instead of all user
