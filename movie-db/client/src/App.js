@@ -11,6 +11,7 @@ import MovieInfo from "./components/MovieInfo/MovieInfo";
 import UserMovieList from "./components/UserMovieList/UserMovieList";
 import UserListMovies from "./components/UserListMovies/UserListMovies";
 import UserProfile from "./components/UserProfile/UserProfile";
+import Search from "./components/Search/Search";
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/movie-lists" component={UserMovieList} />
           <Route path="/movie-list" component={UserListMovies} />
           <Route path="/user-info" component={UserProfile} />
+          <Route path="/search" component={Search} />
         </Switch>
 
 
