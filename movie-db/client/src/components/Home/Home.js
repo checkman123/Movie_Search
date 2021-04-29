@@ -10,6 +10,8 @@ import SearchBar from '../SearchBar/SearchBar';
 const Home = () => {
 
 
+  
+
   const classes = useStyles();
 
   const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
@@ -18,6 +20,7 @@ const Home = () => {
   const UPCOMING_API_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
       //states- input query, movies
       const [query, setQuery] = useState('');
+      
       //create the state for movies, and update that state appropriate
       const [popularMovies, setPopularMovies] = useState([]);
       const [upComingMovies, setUpComingMovies] = useState([]);

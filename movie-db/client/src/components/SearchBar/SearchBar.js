@@ -6,7 +6,7 @@ import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import useStyles from './styles';
 
 
-const SearchBar = ({movie}) => {
+const SearchBar = () => {
 
     const classes = useStyles();
       //states- input query, movies
