@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 
 import MovieCard from "../MovieCard/MovieCard"
+import SearchBar from '../SearchBar/SearchBar';
 
 const Home = () => {
 
@@ -45,6 +46,7 @@ const Home = () => {
 
   return (
     <>
+    <SearchBar/>
     <Typography className={classes.heading}variant="h5">Popular</Typography>
     <div className="card-list">
       {popularMovies.map(movie => (
