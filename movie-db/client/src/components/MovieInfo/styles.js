@@ -10,6 +10,9 @@ export default makeStyles((theme) => ({
       color: 'rgba(0,183,255, 1)',
       marginBottom: '15px'
     },
+    addBtn: {
+      position: 'inherit'
+    },
     /* for phone version */
     [theme.breakpoints.down('sm')] : {
       

@@ -58,7 +58,10 @@ const MovieListForm = ({ currentId, setCurrentId }) => {
       }
     
     const clear = () =>{
+      if(setCurrentId){
         setCurrentId(0);
+      }
+        
         setListData({ title: '', description: ''});
     }
 
