@@ -38,7 +38,7 @@ const MovieInfo = (props) => {
     genres: []
   })
 
-  console.log(props.location.state.movie);
+  //console.log(props.location.state.movie);
 
   const movie = props.location.state.movie;
 
@@ -62,7 +62,7 @@ const MovieInfo = (props) => {
       const getMovieInfo = axios.get(GET_MOVIE_INFO);
       axios.all([getVideo, getSimilarMovie, getMovieInfo]).then(
         axios.spread((...allData) => {
-          console.log(allData);
+          //console.log(allData);
           setVideos(allData[0].data.results);
           setSimilarMovies(allData[1].data.results);
           setMovieInfo(allData[2].data);
@@ -80,6 +80,7 @@ const MovieInfo = (props) => {
 
   //Get user movie lists
   const movieLists = useSelector((state) => state.movieLists);
+  console.log(movieLists);
 
   useEffect(() =>{
     dispatch(getMovieLists(userId));
@@ -109,9 +110,8 @@ const MovieInfo = (props) => {
 
 
         console.log(" movie list exist");
-        console.log(movieLists);
 
-
+        popUpHandler();
 
         //setMovieData({ ...movieData, title: movieInfo.title, movie_id: movieInfo.id, overview: movieInfo.overview, poster_path: movieInfo.poster_path, genres: movieInfo.genres });
 
@@ -134,16 +134,18 @@ const MovieInfo = (props) => {
 
     //handle Popup
     const [buttonPopup, setButtonPopup] = useState(false);
+    const [listExist, setListExist] = useState(false);
 
     const popUpHandler = () => {
-      setButtonPopup(true)
+      if(movieLists.length > 0){
+        setListExist(true);
+      }
+      setButtonPopup(true);
     }
 
   return (
     <>
-      <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <MovieListForm/>
-      </PopUpList>
+      <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists}/>
       
       <div className={classes.card} key={movie.id}>
           <img className="card-image"

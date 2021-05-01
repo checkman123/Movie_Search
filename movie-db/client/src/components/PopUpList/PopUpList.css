@@ -22,5 +22,10 @@
 .popup-inner .close-btn{
     position: absolute;
     top: 16px;
-    right: 16px;
+    right: 32px;
+}
+
+.combo-box{
+    align-items: center;
+    align-content: center;
 }
