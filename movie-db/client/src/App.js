@@ -12,6 +12,7 @@ import UserMovieList from "./components/UserMovieList/UserMovieList";
 import UserListMovies from "./components/UserListMovies/UserListMovies";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Search from "./components/Search/Search";
+import About from "./components/About/About";
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/movie-list" component={UserListMovies} />
           <Route path="/user-info" component={UserProfile} />
           <Route path="/search" component={Search} />
+          <Route path="/about" component={About}/>
         </Switch>
 
 

@@ -51,7 +51,7 @@ const ExampleNav = () => {
         userId = getUser.result.googleId;
       }
     }
-
+ 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
@@ -60,7 +60,7 @@ const ExampleNav = () => {
         <Typography component={Link} to="/example" className={classes.heading} variant="h5" align="center">Example</Typography>
         <Typography component={Link} to="/about" className={classes.heading} variant="h5" align="center">About</Typography>
         <Typography component={Link} to={`/movie-lists/${userId}`} className={classes.heading} variant="h5" align="center">My List</Typography>
-        <Typography component={Link} to="/user-info" className={classes.heading} variant="h5" align="center">My Users</Typography>
+        {user? (<Typography component={Link} to="/user-info" className={classes.heading} variant="h5" align="center">My Profile</Typography>) : (null)}
       </div>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
