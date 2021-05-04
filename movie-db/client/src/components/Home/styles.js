@@ -16,6 +16,10 @@ export default makeStyles((theme) => ({
       position: 'relative',
       display: 'flex',
     },
+    cardList:{
+      paddingLeft: '20px',
+      paddingRight: '20px',
+    },
 
     
     /* for phone version */

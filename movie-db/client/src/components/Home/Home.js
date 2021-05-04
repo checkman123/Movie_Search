@@ -2,15 +2,31 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
-import useStyles from './styles';
+import $ from 'jquery'
 
+//Carousel from Swiper
+  import { Swiper, SwiperSlide } from "swiper/react";
+  // import Swiper core and required modules
+  import SwiperCore, {
+    Pagination, Navigation, Scrollbar
+  } from 'swiper/core';
+  // Import Swiper styles
+  import 'swiper/swiper.scss';
+  import "swiper/components/pagination/pagination.min.css"
+  import "swiper/components/navigation/navigation.min.css"
+
+//Style
+  import useStyles from './styles';
+  import './styles.css'
+
+//Components
 import MovieCard from "../MovieCard/MovieCard"
 import SearchBar from '../SearchBar/SearchBar';
+import Footer from '../Footer/Footer'
 
 const Home = () => {
-
-
-  
+  // install Swiper modules
+  SwiperCore.use([Pagination, Navigation, Scrollbar]);
 
   const classes = useStyles();
 
@@ -44,18 +60,29 @@ const Home = () => {
       useEffect(() => {
         fetchData();
       }, []);
-      
-      
 
   return (
     <>
     <SearchBar/>
     <Typography className={classes.heading}variant="h5">Popular</Typography>
-    <div className="card-list">
-      {popularMovies.map(movie => (
-          <MovieCard movie={movie}/>
-      ))}
-    </div> 
+    <Swiper
+      spaceBetween={20}
+      slidesPerView={7}
+      navigation={true}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      pagination
+    >
+      <div className={classes.cardList}>
+        {popularMovies.map(movie => (
+          <SwiperSlide>
+            <MovieCard movie={movie}/>
+          </SwiperSlide>
+        ))}
+      </div> 
+    </Swiper>
+
+ 
 
     {/*upComingMovies.filter(movie => movie.poster_path).map(movie => (
 
@@ -63,11 +90,24 @@ const Home = () => {
     ))*/}
 
     <Typography className={classes.heading}variant="h5">upcoming</Typography>
-    <div className="card-list">
-      {upComingMovies.map(movie => (
-          <MovieCard movie={movie}/>
-      ))}
+    <Swiper
+      spaceBetween={20}
+      slidesPerView={7}
+      navigation={true}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      pagination
+    >
+      <div className={classes.cardList}>
+        {upComingMovies.map(movie => (
+          <SwiperSlide>
+            <MovieCard movie={movie}/>
+          </SwiperSlide>
+        ))}
       </div> 
+    </Swiper>
+
+
     <Footer/>
 
     </>

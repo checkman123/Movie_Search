@@ -19,8 +19,6 @@ const MovieCard = ({movie}) => {
     <>
     <div className={classes.card}>    
 
-
-
       <Link to={{
       pathname: `/movie/${str}`,
       state: { movie },
@@ -31,7 +29,6 @@ const MovieCard = ({movie}) => {
           <img  src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
                 alt={movie.title + ' poster'}/>
         </div>
-        <h3 className={classes.title}>{movie.title}</h3>
         </div>
       </Link>
 
