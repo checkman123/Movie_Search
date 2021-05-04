@@ -68,6 +68,7 @@ const Home = () => {
           <MovieCard movie={movie}/>
       ))}
       </div> 
+    <Footer/>
 
     </>
   );
