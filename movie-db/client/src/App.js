@@ -20,21 +20,20 @@ const App = () => {
     <BrowserRouter>
       <Box>
         <NavBar/>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/example" component={Example} />
-          <Route path="/auth" component={Auth} />
-          <Route path="/movie" component={MovieInfo} />
-          <Route path="/movie-lists" component={UserMovieList} />
-          <Route path="/movie-list" component={UserListMovies} />
-          <Route path="/user-info" component={UserProfile} />
-          <Route path="/search" component={Search} />
-          <Route path="/about" component={About}/>
-        </Switch>
-
-
-          
-          
+        <Container maxwidth="lg">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/example" component={Example} />
+            <Route path="/auth" component={Auth} />
+            <Route path="/movie" component={MovieInfo} />
+            <Route path="/movie-lists" component={UserMovieList} />
+            <Route path="/movie-list" component={UserListMovies} />
+            <Route path="/user-info" component={UserProfile} />
+            <Route path="/search" component={Search} />
+            <Route path="/about" component={About}/>
+          </Switch>
+        </Container>
+        
       </Box>
     </BrowserRouter>
   );
