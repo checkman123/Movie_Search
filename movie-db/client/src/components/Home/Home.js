@@ -62,12 +62,12 @@ const Home = () => {
       }, []);
 
   return (
-    <>
+    <div>
     <SearchBar/>
     <Typography className={classes.heading}variant="h5">Popular</Typography>
     <Swiper
-      spaceBetween={20}
-      slidesPerView={7}
+      spaceBetween={5}
+      slidesPerView={4}
       navigation={true}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
@@ -82,8 +82,6 @@ const Home = () => {
       </div> 
     </Swiper>
 
- 
-
     {/*upComingMovies.filter(movie => movie.poster_path).map(movie => (
 
     <MovieCard movie={movie}/>
@@ -91,8 +89,8 @@ const Home = () => {
 
     <Typography className={classes.heading}variant="h5">upcoming</Typography>
     <Swiper
-      spaceBetween={20}
-      slidesPerView={7}
+      spaceBetween={5}
+      slidesPerView={4}
       navigation={true}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
@@ -110,7 +108,7 @@ const Home = () => {
 
     <Footer/>
 
-    </>
+    </div>
   );
 };
 

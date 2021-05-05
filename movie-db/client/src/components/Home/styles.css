@@ -24,7 +24,7 @@
 .swiper-container{
     height: 400px;
     padding-left: 40px;
-    padding-right: 30px;
+    padding-right: 0px;
 }
 
 .swiper-pagination-bullet {
