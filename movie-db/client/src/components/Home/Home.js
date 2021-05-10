@@ -21,7 +21,7 @@ import $ from 'jquery'
 
 //Components
 import MovieCard from "../MovieCard/MovieCard"
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBars from '../SearchBars/SearchBars';
 import Footer from '../Footer/Footer'
 
 const Home = () => {
@@ -63,7 +63,7 @@ const Home = () => {
 
   return (
     <div>
-    <SearchBar/>
+    <SearchBars/>
     <Typography className={classes.heading}variant="h5">Popular</Typography>
     <Swiper
       spaceBetween={5}

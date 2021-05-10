@@ -2,12 +2,15 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import useStyles from './styles';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBars from '../SearchBars/SearchBars';
 import MovieCard from "../MovieCard/MovieCard"
 
 const Search = (props) => {
 
   const classes = useStyles();
+
+  const BarStyling = {width:"20rem",height: "2rem", background:"#F2F1F9", borderRadius:"10%"};
+      const BarStyling1 = {width:"7rem",height: "2rem", background:"#F2F1F9", borderRadius:"10%"};
 
   const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
   //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
@@ -48,11 +51,17 @@ const Search = (props) => {
 
   return (
 <>
-    <input onChange={event => setQuery(event.target.value)} />
+    <input 
+      style = {BarStyling}
+      placeholder = "Search"
+    onChange={event => setQuery(event.target.value)} />
 
 
 
-    <button onClick={onSubmit}>SEARCH</button>
+    <button 
+     icon="search"
+        style = {BarStyling1}
+    onClick={onSubmit}>SEARCH</button>
     <Typography className={classes.heading}variant="h5">upcoming</Typography>
     <div className="card-list">
       {searchMovies.map(movie => (
