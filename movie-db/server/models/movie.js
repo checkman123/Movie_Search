@@ -8,7 +8,9 @@ const movieInfo = mongoose.Schema({
   genres : [{
     id : String,
     name : String
-     }]
+     }],
+  release_date: String,
+  movie_list_id: [String],
 });
 
 const Movie = mongoose.model("Movie", movieInfo);

@@ -29,18 +29,18 @@ export const ListBoard = () => {
     }, [currentId, dispatch])
     return (
       <Grow in>
-      <Container>
-        <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <Grid className = {classes.container} container alignItems="stretch" spacing={3}>
-              <MovieLists/>
+        <Container>
+          <Grid container className={classes.mainContainer} justify="space-between" alignItems="stretch" spacing={3}>
+            <Grid item xs={12} sm={7}>
+              <Grid className = {classes.container} container alignItems="stretch" spacing={3}>
+                <MovieLists/>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MovieListForm currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <MovieListForm currentId={currentId} setCurrentId={setCurrentId}/>
-          </Grid>
-        </Grid>
-      </Container>
-    </Grow>
+        </Container>
+      </Grow>
     )
 }

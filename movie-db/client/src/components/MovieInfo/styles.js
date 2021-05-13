@@ -2,7 +2,7 @@ import{ makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     card: {
-      padding: '2rem 4rem',
+      padding: '0',
       marginBottom: '2rem',
       color: 'white'
     },    

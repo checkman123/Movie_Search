@@ -35,7 +35,8 @@ const MovieInfo = (props) => {
     movie_id: 0,
     overview: '',
     poster_path: '',
-    genres: []
+    genres: [],
+    release_date:''
   })
 
   //console.log(props.location.state.movie);
@@ -80,7 +81,7 @@ const MovieInfo = (props) => {
 
   //Get user movie lists
   const movieLists = useSelector((state) => state.movieLists);
-  console.log(movieLists);
+  //console.log(movieLists);
 
   useEffect(() =>{
     dispatch(getMovieLists(userId));
@@ -95,6 +96,7 @@ const MovieInfo = (props) => {
       window.alert("Please Sign in first");
     } else {
     //console.log("CLICKED")
+      
 
       if(!movieLists || movieLists.length < 1){
         //If user doesnt have movielist, create it first then add movie into the list
@@ -145,7 +147,7 @@ const MovieInfo = (props) => {
 
   return (
     <>
-      <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists}/>
+      <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists} movieInfo={movieInfo}/>
       
       <div className={classes.card} key={movie.id}>
           <img className="card-image"
