@@ -8,6 +8,10 @@ import MovieCard from "../MovieCard/MovieCard"
 
 const Search = (props) => {
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const classes = useStyles();
 
   const BarStyling = {width:"20rem",height: "2rem", background:"#F2F1F9", borderRadius:"10%"};
@@ -56,7 +60,7 @@ const Search = (props) => {
          <div class="search"></div>          
              <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)}/>
                   <Link to={{ pathname: `search`, state: { query },}}>
-                      <button type="submit" class="searchButton"> 
+                      <button type="submit" class="searchButton" onClick={refreshPage}> 
                       <i class="fa fa-search"></i>        
                      </button>
                   </Link>                    
