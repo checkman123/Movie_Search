@@ -14,17 +14,20 @@ const SearchBars = () => {
   return (
 
     <div>
-         <div class="search"></div> 
-         
-             <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)}/>
-                <Link to={{ pathname: `/search/`, state: { query },}}>
-                   <button type="submit" class="searchButton"> 
-                   <i class="fa fa-search"></i>        
-                 </button>
-                </Link>     
+        <div class="search">
+          <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)}/>
+
+          <Link to={{ pathname: `/search/`, state: { query },}}>
+            <button type="submit" class="searchButton"> 
+              {/*This is where you put in the button*/}
+            </button>
+          </Link>   
+        </div> 
+  
      </div>
 
   );
 };
+
 
 export default SearchBars;
