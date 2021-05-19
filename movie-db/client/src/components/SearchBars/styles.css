@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
   .search {
-    width: 50%;
     position: relative;
     display: flex;
     justify-content: center;
