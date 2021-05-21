@@ -16,8 +16,9 @@ export default makeStyles((theme) => ({
       position: 'relative',
       display: 'flex',
     },
-
-    
+    label: {
+      color: 'rgba(0,183,255, 1)',
+    },
     /* for phone version */
     [theme.breakpoints.down('sm')] : {
       
