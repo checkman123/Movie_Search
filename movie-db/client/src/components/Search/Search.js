@@ -4,7 +4,7 @@ import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import useStyles from './styles';
 import { Link, Route, Switch} from 'react-router-dom'
 import SearchBars from '../SearchBars/SearchBars';
-import MovieCard from "../MovieCard/MovieCard"
+import MovieCardWithInfo from "../MovieCardWithInfo/MovieCardWithInfo"
 import './styles.css';
 
 var str = 1;
@@ -90,7 +90,7 @@ const Search = (props) => {
     
     <div className="card-list">
       {searchMovies.map(movie => (
-          <MovieCard movie={movie}/>
+          <MovieCardWithInfo movie={movie}/>
       ))}
       </div> 
     </div>
