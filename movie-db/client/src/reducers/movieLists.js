@@ -1,8 +1,10 @@
-import { FETCH_ALL_MOVIE_LISTS, CREATE_MOVIE_LIST, UPDATE_MOVIE_LIST, DELETE_MOVIE_LIST } from '../constants/actionTypes'
+import { FETCH_ALL_MOVIE_LISTS, CREATE_MOVIE_LIST, UPDATE_MOVIE_LIST, DELETE_MOVIE_LIST, FETCH_LIST_OF_MOVIES } from '../constants/actionTypes'
 
 const movieListReducer = (movieLists = [], action) => {
+    console.log(action);
     switch(action.type){
         case FETCH_ALL_MOVIE_LISTS:
+        case FETCH_LIST_OF_MOVIES:
             return action.payload;
         case CREATE_MOVIE_LIST:
             return [...movieLists, action.payload];

@@ -17,6 +17,7 @@ export const getMovieLists = (id) => async (dispatch) => {
     }
 }
 
+
 export const createMovieList = (movieList) => async (dispatch) => {
     try{
         // Get response from API

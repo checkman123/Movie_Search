@@ -3,34 +3,48 @@ import axios from 'axios';
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { TextField, Button, Paper} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import MovieCard from "../MovieCard/MovieCard"
+import MovieCardWithInfo from "../MovieCardWithInfo/MovieCardWithInfo"
 import VideoEmbed from "../VideoEmbed/VideoEmbed"
-import { createMovie } from '../../actions/movies';
+import { getListOfMovies } from '../../actions/listOfMovies';
 
 import useStyles from './styles';
 
-const UserMovies = (props) => {
-    const user = JSON.parse(localStorage.getItem('profile'));
+const UserListMovies = (props) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
+  var userId;
 
-    const classes = useStyles();
-    const dispatch = useDispatch();
+  //Check if user is login by us or Google
+  if(user){
+    if(user.result._id){
+      userId = user.result._id;
+    } else { 
+      userId = user.result.googleId;
+    }
+  }  
+  
+  const listOfMovies = useSelector((state) => state.listOfMovies);
 
-    console.log(props.location.state.list);
-    const movies = props.location.state.list;
+  const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() =>{
+    dispatch(getListOfMovies(props.location.state.list._id));
+  }, [dispatch])
+
+  console.log("props.location.state.list");
+  console.log(props.location.state.list);
+  console.log(listOfMovies);
+  //const movies = props.location.state.list;
 
   return (
     <>
-
-        <div className="card-list">
-
-        </div> 
-        <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
-        <div className="card-list">
-
-        </div> 
+      {listOfMovies.map(movie => (
+          <MovieCardWithInfo movie={movie}/>
+      ))}
     </>
   );
 };
 
-export default UserMovies;
+export default UserListMovies;

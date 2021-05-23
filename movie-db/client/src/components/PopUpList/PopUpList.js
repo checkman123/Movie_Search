@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import TextField from '@material-ui/core/TextField';
+import { TextField, Button, Typography, Paper} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -80,8 +80,9 @@ const PopUpList = (props) => {
       } else {
         //if movie doesnt exist in database, create it
         console.log("if movie doesnt exist in database, create it")
-        dispatch(createMovie({...movieData, title: movieInfo.title, movie_id: movieInfo.id, overview: movieInfo.overview, 
-                              poster_path: movieInfo.poster_path, genres: movieInfo.genres, movie_list_id: [listToAdd._id] }));
+        dispatch(createMovie({...movieData, title: movieInfo.title, movie_id: movieInfo.id, overview: movieInfo.overview,
+                              release_date: movieInfo.release_date, poster_path: movieInfo.poster_path, 
+                              genres: movieInfo.genres, movie_list_id: [listToAdd._id] }));
 
       }
 
@@ -119,7 +120,9 @@ const PopUpList = (props) => {
                         />
                     </div>
 
-                    <button onClick={handleSubmit}>add</button>
+                    <br/>
+                    
+                    <Button onClick={handleSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Add</Button>
                     
                 </div>
                 
@@ -133,7 +136,7 @@ const PopUpList = (props) => {
                     <button className="close-btn" onClick={() => props.setTrigger(false)}>
                         close
                     </button>
-                    <MovieListForm/>
+                    <MovieListForm setTrigger={props.setTrigger} trigger={props.trigger}/>
                 </div>
             </div>
         </div>

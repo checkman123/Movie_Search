@@ -9,7 +9,7 @@ import { createMovieList } from '../../actions/movieLists';
 
 //Get Current ID
 
-const MovieListForm = ({ currentId, setCurrentId }) => {
+const MovieListForm = ({ currentId, setCurrentId , setTrigger, trigger}) => {
     const [listData, setListData] = useState({
         title: '',
         movie_id:[],
@@ -45,6 +45,11 @@ const MovieListForm = ({ currentId, setCurrentId }) => {
         dispatch(createMovieList({...listData, user_list_id: userId}));
         clear();
 
+        //For closing popup when creating a list from popup
+        if(trigger){
+          setTrigger(false);
+        }
+        
       };
 
       if(!user?.result?._id && !user?.result?.googleId){

@@ -9,6 +9,7 @@ import userRoutes from "./routes/users.js";
 import userInfoRoutes from "./routes/userInfo.js";
 import movieRoutes from "./routes/movies.js";
 import movieListRoutes from "./routes/movieLists.js";
+import listOfMoviesRoutes from "./routes/listOfMovies.js"
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/user", userRoutes);
 app.use("/movies", movieRoutes);
 app.use("/movie-lists", movieListRoutes);
 app.use("/user-info", userInfoRoutes);
+app.use("/movie-list", listOfMoviesRoutes);
 
 
 // https;//www.mongodb.com/cloud/atlas
