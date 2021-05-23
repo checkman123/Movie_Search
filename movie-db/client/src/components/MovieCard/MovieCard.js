@@ -12,15 +12,12 @@ const MovieCard = ({movie}) => {
 
     //console.log(movie);
 
-    //convert movie title into url pathname
-    var str = movie.title;
-    str = str.replace(/\s+/g, '-').toLowerCase();
   return (
     <>
     <div className={classes.card}>    
 
       <Link to={{
-      pathname: `/movie/${str}`,
+      pathname: `/movie/${movie.id}`,
       state: { movie },
       }}>
 
