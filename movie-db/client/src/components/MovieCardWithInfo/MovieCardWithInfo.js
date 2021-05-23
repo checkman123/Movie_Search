@@ -23,7 +23,7 @@ const MovieCardWithInfo = ({movie}) => {
     <div className={classes.card}>    
 
       <Link to={{
-      pathname: `/movie/`,
+      pathname: `/movie/${movie.movie_id}`,
       state: { movie },
       }}>
       
