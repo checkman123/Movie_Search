@@ -4,6 +4,8 @@ import { Link, Route, Switch} from 'react-router-dom'
 import { Container, AppBar, Typography, Grow, Grid, Paper, TextField } from "@material-ui/core";
 import Dotdotdot from 'react-dotdotdot'
 
+import noImageAvailable from '../../Images/noimageavailable.png'
+
 import useStyles from './styles';
 import './styles.scss';
 
@@ -12,6 +14,8 @@ const MovieCardWithInfo = ({movie}) => {
     const classes = useStyles();
 
     var str = 1;
+
+    const imageLink = "https://image.tmdb.org/t/p/w185_and_h278_bestv2/"
 
     //console.log(movie);
 
@@ -31,9 +35,9 @@ const MovieCardWithInfo = ({movie}) => {
         <Grid item xs={2} className={classes.image}>
           
         <div className={classes.cardInner} key={1}>
-          <div className="card-img">
-            <img  src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-                  alt={movie.title + ' poster'}/>
+          <div className="card-img2">
+          <img  src={ movie.poster_path ? `${imageLink}${movie.poster_path}` : noImageAvailable}
+                alt={movie.title + ' poster'}/>
           </div>
         </div>
         </Grid>
