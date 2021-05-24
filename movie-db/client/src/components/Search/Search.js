@@ -82,10 +82,16 @@ const Search = (props) => {
                   </Link>                    
      </div>
     <Typography className={classes.heading}variant="h5">Your Search</Typography>
-    <button type="submit" class="clickButton" onClick={firstPage}> </button> 
+    <button type="submit" class="clickButton1" onClick={firstPage}> 
+    <i class="fa fa-angle-left"></i>
+    </button> 
+    
     <label class = "label">
           First or next page: 
-          <button type="submit" class="clickButton" onClick={nextPage}> </button> 
+          <button type="submit" class="clickButton2" onClick={nextPage}> 
+          <i class="fa fa-angle-right"></i>
+           </button> 
+          
     </label>
     
     <div className="card-list">
