@@ -1,0 +1,50 @@
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+
+$heading-font-family: 'Montserrat', sans-serif;
+$paragraph-font-family: 'Open Sans', sans-serif;
+
+$light: 300;
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+$font-regular: 400;
+$mont-bold: 700;
+
+$text-movie-title:60px;
+$text-overview:15px;
+$text-action-btn:14px;
+$text-movie-description:12px;
+
+$font-color: #bfc4c9;
+
+h1,h2,h3,h4,h5 {
+    font-family:$heading-font-family;
+    color:$font-color;
+    margin:0px;
+  }
+
+p {
+    font-family:$paragraph-font-family;
+    color:$font-color;
+}
+
+
+.card-img2 {
+    img{
+        height: auto;
+        width: 100%;
+        display: block;
+        border-radius: 20px 0px 0px 20px;
+    }
+    
+}
+
+.overview {
+    font-size: $text-overview;
+    margin: 0;
+    margin-top: 5vw;
+  }
+
+

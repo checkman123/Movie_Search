@@ -21,8 +21,7 @@ const SearchBars = () => {
 
           <Link to={{ pathname: `/search/`, state: { query },}}>
             <button type="submit" class="searchButton" > 
-              <i class="fa fa-search"></i>       
-              {/*This is where you put in the button*/}
+              <i class="fa fa-search"></i>
             </button>
           </Link>   
         </div> 

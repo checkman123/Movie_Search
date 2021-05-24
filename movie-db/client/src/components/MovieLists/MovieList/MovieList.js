@@ -30,6 +30,7 @@ const MovieList = ({ list, setCurrentId }) => {
     }
 
     return (
+      <>
       <Link to={{
         pathname: `/movie-list/${list._id}`,
         state: { list },
@@ -39,6 +40,8 @@ const MovieList = ({ list, setCurrentId }) => {
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p" gutterBottom>{list.description}</Typography>
           </CardContent>
+          </Card>
+      </Link>
           <CardActions className={classes.cardActions}>
             {//Check for name so only user who created it can delete it
               (userId === list?.user_list_id ) && (
@@ -47,8 +50,8 @@ const MovieList = ({ list, setCurrentId }) => {
               </Button>)
             }
           </CardActions>
-        </Card>
-      </Link>
+        </>
+      
     );
 }
 

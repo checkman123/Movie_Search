@@ -39,15 +39,13 @@ const MovieInfo = (props) => {
     release_date:''
   })
 
-  //console.log(props.location.state.movie);
-
-  const movie = props.location.state.movie;
+  const movie = window.location.pathname.replace('/movie/','');
 
   const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
   //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
-  const GET_MOVIE_VIDEOS = `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}&language=en-US`
-  const GET_SIMILAR_MOVIES = `https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${API_KEY}&language=en-US&page=1`
-  const GET_MOVIE_INFO = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}&language=en-US`
+  const GET_MOVIE_VIDEOS = `https://api.themoviedb.org/3/movie/${movie}/videos?api_key=${API_KEY}&language=en-US`
+  const GET_SIMILAR_MOVIES = `https://api.themoviedb.org/3/movie/${movie}/similar?api_key=${API_KEY}&language=en-US&page=1`
+  const GET_MOVIE_INFO = `https://api.themoviedb.org/3/movie/${movie}?api_key=${API_KEY}&language=en-US`
   
 
   

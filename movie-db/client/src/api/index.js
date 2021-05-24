@@ -30,5 +30,7 @@ export const fetchMovieLists = (id) => API.get(`/movie-lists/${id}`);
 export const createMovieList = (newMovieList) => API.post('/movie-lists', newMovieList);
 export const deleteMovieList = (id) => API.delete(`/movie-lists/${id}`);
 
+export const fetchListOfMovies = (id) => API.get(`/movie-list/${id}`);
+
 export const fetchUsers = () => API.get('/user-info');
 export const fetchUser = (id) => API.get(`/user-info/${id}`);
