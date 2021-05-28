@@ -1,10 +1,11 @@
-import React, {useState } from 'react'
+import React, {useState, useEffect, useCallback } from 'react'
 import {Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
 import { GoogleLogin } from 'react-google-login'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import {signin, signup} from '../../actions/auth'
+import FileBase from 'react-file-base64';
 
 import Input from './Input'
 import Icon from './icon'
@@ -15,19 +16,23 @@ const initialState = { firstName: '',
                        lastName: '',
                        email: '',
                        password: '',
-                       confirmPassword: ''}
+                       confirmPassword: '',
+                       profile_img: ''}
 
 export const Auth = () => {
     const classes = useStyles();
 
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
-    const [formData, setFormdata] = useState(initialState);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
     const handleSubmit = (e) =>{
         e.preventDefault(); //Dont reload
+
+        console.log("Submit");
+        console.log(formData);
         
         if(isSignUp){
             dispatch(signup(formData,history))
@@ -39,9 +44,14 @@ export const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     const handleChange = (e) =>{
-        setFormdata({... formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
-        
+        setFormData({... formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
+        console.log(formData);
     }
+
+    const handleImage = useCallback((formData, base64) => {
+        setFormData({ ...formData, profile_img: base64 })
+      }, [setFormData]);
+
     const googleSuccess = async (res) =>{
         const result = res?.profileObj;     // ?.  no error if there is no profileObj, just nondefined
         const token = res?.tokenId;
@@ -86,7 +96,15 @@ export const Auth = () => {
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
 
                         { //show on Sign Up page only
-                            isSignUp && <Input name="confirmPassword"  label="Repeat Password" handleChange={handleChange} type="password"/> 
+                            isSignUp ? 
+                            <div className={classes.hidden}>
+                                <Input name="confirmPassword"  label="Repeat Password" handleChange={handleChange} type="password"/> 
+                                <br/>
+                                <FileBase  name="profiele_img" type="file" multiple={false} onDone={({ base64 }) => handleImage(formData, base64)} /> 
+                               
+                            </div>
+
+                            : ""
                         }
 
                     </Grid>

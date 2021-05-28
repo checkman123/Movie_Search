@@ -28,4 +28,7 @@ export default makeStyles((theme) => ({
   googleButton: {
     marginBottom: theme.spacing(2),
   },
+  hidden: {
+    padding: '8px'
+  },
 }));
