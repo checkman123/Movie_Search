@@ -38,8 +38,20 @@ const UserListMovies = (props) => {
   console.log(listOfMovies);
   //const movies = props.location.state.list;
 
+  //Copy Current Url
+  function copy() {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setShare(true);
+  }
+
   return (
     <>
+      <Button className={classes.addBtn} variant="contained" color="primary" size="large" type="submit" onClick={copy} fullWidth>
       {listOfMovies.map(movie => (
           <MovieCardWithInfo movie={movie}/>
       ))}
