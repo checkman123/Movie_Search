@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import {Card, CardActions, CardContent, CardMedia, Button, Typography, Grid } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -31,25 +31,32 @@ const MovieList = ({ list, setCurrentId }) => {
 
     return (
       <>
-      <Link to={{
-        pathname: `/movie-list/${list._id}`,
-        state: { list },
-      }}>
+
         <Card className={classes.card}>
-          <Typography className={classes.title} variant="h5" component="h2" gutterBottom>{list.title}</Typography>
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p" gutterBottom>{list.description}</Typography>
-          </CardContent>
+          <Grid container >
+            <Grid item xs={10}>
+              <Link className="link" to={{
+                pathname: `/movie-list/${list._id}`,
+                state: { list },
+              }}>
+                <Typography noWrap className={classes.title} variant="h5" component="h2">{list.title}</Typography>
+              </Link>
+            </Grid>
+            <Grid item xs={2}>
+              <div className={classes.delete}>
+                {//Check for name so only user who created it can delete it
+                  (userId === list?.user_list_id ) && (
+                    <Button size="small" color="secondary" onClick={() => dispatch(deleteMovieList(list._id))}>
+                      <DeleteIcon fontSize="small" />
+                    </Button>)
+                  }
+              </div>
+
+            </Grid>
+          </Grid>
           </Card>
-      </Link>
-          <CardActions className={classes.cardActions}>
-            {//Check for name so only user who created it can delete it
-              (userId === list?.user_list_id ) && (
-              <Button size="small" color="secondary" onClick={() => dispatch(deleteMovieList(list._id))}>
-                <DeleteIcon fontSize="small" /> Delete
-              </Button>)
-            }
-          </CardActions>
+
+
         </>
       
     );
