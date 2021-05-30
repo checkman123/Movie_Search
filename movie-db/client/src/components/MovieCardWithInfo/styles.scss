@@ -30,6 +30,9 @@ p {
     color:$font-color;
 }
 
+.link {
+    text-decoration: none;
+}
 
 .card-img2 {
     img{
@@ -38,7 +41,6 @@ p {
         display: block;
         border-radius: 20px 0px 0px 20px;
     }
-    
 }
 
 .overview {
