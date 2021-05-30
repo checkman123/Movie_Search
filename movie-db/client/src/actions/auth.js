@@ -10,7 +10,8 @@ export const signin = (formData, history) => async (dispatch) => {
         //go to homepage
         history.push('/');
     } catch (error) {
-        console.log(error);
+        window.alert(error.response.data.message);
+        //console.log(error);
     }
 }
 
@@ -26,6 +27,7 @@ export const signup = (formData, history) => async (dispatch) => {
         //go to homepage
         history.push('/');
     } catch (error) {
-        console.log(error);
+        //console.log(error);
+        window.alert(error.response.data.message);
     }
 }
