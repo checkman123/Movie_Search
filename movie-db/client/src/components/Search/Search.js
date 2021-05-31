@@ -9,43 +9,39 @@ import './styles.css';
 
 var str = 1;
 
-if(str !=1){
+if(str !== 1){
   str = 1;
 }
 
 const Search = (props) => {
 
-  function refreshPage() {
-    window.location.reload(false);
-   // fetchData();
-  }
-
   function nextPage() {
     str++;  
+    window.scrollTo(0, 0)
     fetchData();
    // refreshPage();
   }
 
-  function firstPage() {
-   
-    refreshPage();
+  function prevPage() {
+    if(str > 1){
+      str--;  
+      window.scrollTo(0, 0)
+      fetchData();
+    }
   }
   const classes = useStyles();
 
   const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
   //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
-      //states- input query, movies
+  //states- input query, movies
   const [query, setQuery] = useState('');
 
-      const SEARCH_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${props.location.state.query}&page=${str}&include_adult=false`;
-      
-      str = str + 1;
-      //create the state for movies, and update that state appropriate
+  const SEARCH_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${props.location.state.query}&page=${str}&include_adult=false`;
+  
+  //create the state for movies, and update that state appropriate
   const [searchMovies, setSearchMovies] = useState([]);
     
-
- 
   const handleKeypress = e => {
         //it triggers by pressing the enter key
       if (e.keyCode === 13) {
@@ -86,7 +82,7 @@ const Search = (props) => {
         <label class = "label">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         {'  '}First {'  '}
-            <button type="submit" class="clickButton2" onClick={firstPage}> 
+            <button type="submit" class="clickButton2" onClick={prevPage}> 
             
             <i class="fa fa-angle-left"></i>
             </button> 
@@ -104,9 +100,6 @@ const Search = (props) => {
 
       </label>
     </div>
-   
-    
-   
   );
 };
 

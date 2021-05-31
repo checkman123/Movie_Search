@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link, NavLink, Route, Switch} from 'react-router-dom'
 import useStyles from './styles';
 import { useHistory } from 'react-router-dom'
+import SearchIcon from '@material-ui/icons/Search';
 import './styles.css'
 
 const SearchBars = () => {
@@ -31,12 +32,11 @@ const SearchBars = () => {
   
     <div>
         <div class="search">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
-        <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)} onKeyPress={handleKeyPress} />
+          <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)} onKeyPress={handleKeyPress} />
 
           <Link to={{ pathname: `/search/`, state: { query },}}>
             <button type="submit" class="searchButton" > 
-              <i class="fa fa-search"></i>
+              <SearchIcon/>
             </button>
           </Link>   
         </div> 

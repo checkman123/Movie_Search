@@ -30,7 +30,10 @@
     color: #fff;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    font-size: 20px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
  
