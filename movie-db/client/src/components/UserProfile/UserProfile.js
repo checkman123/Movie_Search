@@ -31,8 +31,7 @@ const UserProfile = () => {
     const dispatch = useDispatch();
   
 
-    useEffect(() =>{
-      dispatch(getUsers());
+    useEffect(() => {
       dispatch(getUser(userId));
     }, [dispatch])
 
