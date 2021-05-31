@@ -13,6 +13,7 @@ import UserListMovies from "./components/UserListMovies/UserListMovies";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Search from "./components/Search/Search";
 import About from "./components/About/About";
+import ProfileEditor from "./components/ProfileEditor/ProfileEditor"
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/user-info" component={UserProfile} />
             <Route path="/search" component={Search} />
             <Route path="/about" component={About}/>
+            <Route path="/profile-editor" component={ProfileEditor}/>
           </Switch>
         </Container>
         

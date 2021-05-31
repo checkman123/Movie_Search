@@ -91,7 +91,7 @@ const Home = () => {
     <MovieCard movie={movie}/>
     ))*/}
 
-    <Typography className={classes.heading}variant="h5">upcoming</Typography>
+    <Typography className={classes.heading}variant="h5">Upcoming</Typography>
     <Swiper
       spaceBetween={5}
       slidesPerView={4}
@@ -108,6 +108,7 @@ const Home = () => {
       </div> 
     </Swiper>
 
+<<<<<<< Updated upstream
     <Typography className={classes.heading}variant="h5">Top Rated</Typography>
     <Swiper
       spaceBetween={5}
@@ -125,8 +126,11 @@ const Home = () => {
       </div> 
     </Swiper>
 
+=======
+          
+>>>>>>> Stashed changes
     <Footer/>
-
+    
     </div>
   );
 };
