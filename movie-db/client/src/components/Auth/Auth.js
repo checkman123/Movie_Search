@@ -101,9 +101,7 @@ export const Auth = () => {
                                 <Input name="confirmPassword"  label="Repeat Password" handleChange={handleChange} type="password"/> 
                                 <br/>
                                 <FileBase  name="profile_img" type="file" multiple={false} onDone={({ base64 }) => handleImage(formData, base64)} /> 
-                               
                             </div>
-
                             : ""
                         }
 

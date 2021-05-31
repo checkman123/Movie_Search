@@ -19,9 +19,9 @@ const SearchBars = () => {
           console.log(query);
 
           history.push({
-            pathname: `/search/${query}`,
+            pathname: `/search/${query}&page=1`,
             state: { query }
-        });
+          });
 
         //reload the page
         window.location.reload(false);
@@ -40,7 +40,6 @@ const SearchBars = () => {
             </button>
           </Link>   
         </div> 
-  
      </div>
 
   );
