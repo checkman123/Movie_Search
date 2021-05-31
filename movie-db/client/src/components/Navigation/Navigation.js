@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button, Container } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button, Container, Grid } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 import NavItem from "./NavItem";
 
 import decode from 'jwt-decode';
-import memories from '../../Images/movies.jpg';
+import logo from '../../Images/movie-logo.png';
 
 
 import useStyles from './styles';
@@ -61,17 +61,28 @@ const Navigation = (props) => {
   return (
     <div className="navBgColor">
         <Container>
-            <NavBar>
-                <NavItem icon={<AssignmentIcon/>} link={"/posts"}/>
-        
-                {user?.result ? (
-                    <NavItem icon={<AccountCircleIcon/>}>
-                        <DropdownMenu/>
-                    </NavItem>
-                ) : (
-                    <Button component={Link} to="/auth" className={classes.signIn} variant="contained" color="default">Sign In</Button>
-                )}
-            </NavBar>
+            <Grid container>
+                <Grid item xs={10}>
+                <a href="/" className={classes.brandContainer}>
+                    <img className={classes.image} src={logo} alt="icon" height="60" />
+                    <Typography className={classes.heading} variant="h5" align="center">Movie Stack</Typography>
+                </a>
+                </Grid>
+                    
+                <Grid item xs={2}>
+                    <NavBar>
+                        <NavItem icon={<AssignmentIcon/>} link={"/posts"}/>
+                
+                        {user?.result ? (
+                            <NavItem icon={<AccountCircleIcon/>}>
+                                <DropdownMenu/>
+                            </NavItem>
+                        ) : (
+                            <Button component={Link} to="/auth" className={classes.signIn} variant="contained" color="default">Sign In</Button>
+                        )}
+                    </NavBar>
+                </Grid>
+            </Grid>
         </Container>
     </div>
 
