@@ -15,8 +15,8 @@ import './styles.scss';
 
 //Icons
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 
 const Navigation = (props) => {
     const classes = useStyles();
@@ -95,15 +95,17 @@ const Navigation = (props) => {
         return(
             <a href={props.link} className="menu-item" >
                     <span className="icon-button">{props.leftIcon}</span>
+                    <h3 className="menu-title">{props.title}</h3>
             </a>
         );
     }
     return(
         <div className="dropdown">
-            <DropdownItem leftIcon={<AccountCircleIcon/>} link={"/user-info"}>My Profile</DropdownItem>
-            <DropdownItem leftIcon={<AccountCircleIcon/>} link={`/movie-lists/${userId}`}>My List</DropdownItem>
+            <DropdownItem leftIcon={<AccountCircleIcon/>} link={"/user-info"} title={"My Profile"}></DropdownItem>
+            <DropdownItem leftIcon={<CollectionsBookmarkIcon/>} link={`/movie-lists/${userId}`} title={"My List"}></DropdownItem>
+            <br/>
             <div className="logout">
-                <Button className={classes.logout} variant="contained" color="secondary" onClick={logout}>Logout</Button>
+                <Button variant="contained" color="secondary" onClick={logout} fullWidth>Logout</Button>
             </div>
             
         </div>
