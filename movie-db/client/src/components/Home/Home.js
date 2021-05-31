@@ -108,7 +108,6 @@ const Home = () => {
       </div> 
     </Swiper>
 
-<<<<<<< Updated upstream
     <Typography className={classes.heading}variant="h5">Top Rated</Typography>
     <Swiper
       spaceBetween={5}
@@ -126,9 +125,6 @@ const Home = () => {
       </div> 
     </Swiper>
 
-=======
-          
->>>>>>> Stashed changes
     <Footer/>
     
     </div>
