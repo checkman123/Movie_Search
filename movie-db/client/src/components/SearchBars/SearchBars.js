@@ -19,7 +19,7 @@ const SearchBars = () => {
           console.log(query);
 
           history.push({
-            pathname: `/search/${query}&page=1`,
+            pathname: `/search/${query}`,
             state: { query }
           });
 

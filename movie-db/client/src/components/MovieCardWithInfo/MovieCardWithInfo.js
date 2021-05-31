@@ -9,7 +9,7 @@ import noImageAvailable from '../../Images/noimageavailable.png'
 import useStyles from './styles';
 import './styles.scss';
 
-const MovieCardWithInfo = ({movie}) => {
+const MovieCardWithInfo = ({movie, id}) => {
 
     const classes = useStyles();
 
@@ -27,7 +27,7 @@ const MovieCardWithInfo = ({movie}) => {
     <div className={classes.card}>    
 
       <Link className="link" to={{
-      pathname: `/movie/${movie.movie_id}`,
+      pathname: (id) ? `/movie/${id}`:`/movie/${movie.movie_id}`,
       state: { movie },
       }}>
       

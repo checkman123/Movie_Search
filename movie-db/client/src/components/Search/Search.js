@@ -61,6 +61,7 @@ const Search = (props) => {
 
   useEffect(() => {
     fetchData();
+    //console.log(searchMovies);
   }, [page]); //Whenever the page state change, it will call fetchData() 
 
   return (
@@ -72,7 +73,7 @@ const Search = (props) => {
       
       <div className="card-list">
         {searchMovies.length > 0 ? searchMovies.map(movie => (
-            <MovieCardWithInfo movie={movie}/>
+            <MovieCardWithInfo movie={movie} id={movie.id}/>
         )) : 
         <Typography className={classes.heading} variant="h4">Oops, No search result</Typography>}
       </div> 
