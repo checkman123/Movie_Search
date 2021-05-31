@@ -71,50 +71,40 @@ const Search = (props) => {
         fetchData();
       }, []);
       
-      
 
   return (
-
     <div>
-         <div class="search">   
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>       
-         <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)} />
-         <Link to={{ pathname: `/search/`, state: { query },}} >
-                      <button type="submit" class="searchButton" onClick = {refreshPage}>  
-                      <i class="fa fa-search"></i>        
-                     </button> 
-                  </Link>                    
-     </div>
-    <Typography className={classes.heading}variant="h5">Your Search</Typography>
-    
-    
-    <div className="card-list">
-      {searchMovies.map(movie => (
-          <MovieCardWithInfo movie={movie}/>
-      ))}
-      </div> 
+      <SearchBars/>
+      <Typography className={classes.heading}variant="h5">Your Search</Typography>
+      
+      
+      <div className="card-list">
+        {searchMovies.map(movie => (
+            <MovieCardWithInfo movie={movie}/>
+        ))}
+        </div> 
+        <label class = "label">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        {'  '}First {'  '}
+            <button type="submit" class="clickButton2" onClick={firstPage}> 
+            
+            <i class="fa fa-angle-left"></i>
+            </button> 
+            
+      </label>
+
+      
       <label class = "label">
-      <i class="fa fa-arrow-left" aria-hidden="true"></i>
-      {'  '}First {'  '}
-          <button type="submit" class="clickButton2" onClick={firstPage}> 
-          
-          <i class="fa fa-angle-left"></i>
-           </button> 
-          
-    </label>
+      {'  '} {'  '}  ...  {'  '}  {'  '} 
+            <button type="submit" class="clickButton2" onClick={nextPage}> 
+            <i class="fa fa-angle-right"></i>
+            </button> 
+            {'  '}  {'  '} Next  {'  '}  {'  '} 
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
 
-     
-    <label class = "label">
-    {'  '} {'  '}  ...  {'  '}  {'  '} 
-          <button type="submit" class="clickButton2" onClick={nextPage}> 
-          <i class="fa fa-angle-right"></i>
-           </button> 
-           {'  '}  {'  '} Next  {'  '}  {'  '} 
-           <i class="fa fa-arrow-right" aria-hidden="true"></i>
-
-    </label>
+      </label>
     </div>
-
+   
     
    
   );

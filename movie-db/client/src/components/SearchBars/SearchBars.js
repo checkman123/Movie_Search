@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import { Link, NavLink, Route, Switch} from 'react-router-dom'
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import useStyles from './styles';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 import './styles.css'
 
 const SearchBars = () => {
     
     const classes = useStyles();
+    const history = useHistory();
       //states- input query, movies
       const [query, setQuery] = useState('');
 
@@ -17,8 +16,14 @@ const SearchBars = () => {
           console.log('enter press here! ');
           setQuery(event.target.value);
           console.log(query);
-          return <Redirect to = {{ pathname: `/search/`, state: { query},}} />
 
+          history.push({
+            pathname: `/search/${query}`,
+            state: { query }
+        });
+
+        //reload the page
+        window.location.reload(false);
         }
       }
 
