@@ -1,0 +1,14 @@
+.root{
+    color: darkgray;
+}
+
+.tableHead{
+    font-size: 15pt;
+    color: darkgray;
+    font-weight: bold;
+}
+
+.tableBody{
+    font-size: 14pt;
+    color: darkgray;
+}
