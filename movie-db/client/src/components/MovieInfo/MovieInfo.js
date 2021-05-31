@@ -12,6 +12,17 @@ import { getMovieLists } from '../../actions/movieLists'
 import MovieListForm from "../MovieListForm/MovieListForm"
 import PopUpList from "../PopUpList/PopUpList"
 
+//Carousel from Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+// import Swiper core and required modules
+import SwiperCore, {
+  Pagination, Navigation, Scrollbar
+} from 'swiper/core';
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import "swiper/components/pagination/pagination.min.css"
+import "swiper/components/navigation/navigation.min.css"
+
 import useStyles from './styles';
 
 const MovieInfo = (props) => {
@@ -143,6 +154,7 @@ const MovieInfo = (props) => {
       setButtonPopup(true);
     }
 
+     
   return (
     <>
       <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists} movieInfo={movieInfo}/>
@@ -156,7 +168,7 @@ const MovieInfo = (props) => {
               <h3 className="card-title">{movieInfo.title}</h3>
               <p><small>RELEASE DATE: {movieInfo.release_date}</small></p>
               <p><small>RATING: {movieInfo.vote_average}</small></p>
-              <p><small>Genre: &nbsp;         
+              <p><small>GENRE: &nbsp;         
                 {
                   movieInfo?.genres?.map(function(genre, index) {
                     return <span key={index}>{ (index ? ', ' : '') + genre.name }</span>;
@@ -173,12 +185,24 @@ const MovieInfo = (props) => {
             <VideoEmbed video={video}/>
         ))}
       </div> 
+
       <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
-      <div className="card-list">
+      <Swiper
+        spaceBetween={5}
+        slidesPerView={4}
+        navigation={true}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        pagination
+     >
+      <div className={classes.cardList}>
         {similarMovies.map(movie => (
+          <SwiperSlide>
             <MovieCard movie={movie}/>
+          </SwiperSlide>
         ))}
       </div> 
+      </Swiper>
     </>
   );
 };
