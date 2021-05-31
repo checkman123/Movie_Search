@@ -67,13 +67,14 @@ const Search = (props) => {
     <div>
       <SearchBars/>
       <NavButtons/>
-      <Typography className={classes.page}variant="h5">Page: {page}</Typography>
-      <Typography className={classes.heading}variant="h4">Your Search: {query}</Typography>
+      <Typography className={classes.page} variant="h5">Page: {page}</Typography>
+      <Typography className={classes.heading} variant="h4">Your Search: {query}</Typography>
       
       <div className="card-list">
-        {searchMovies.map(movie => (
+        {searchMovies.length > 0 ? searchMovies.map(movie => (
             <MovieCardWithInfo movie={movie}/>
-        ))}
+        )) : 
+        <Typography className={classes.heading} variant="h4">Oops, No search result</Typography>}
       </div> 
 
       <NavButtons/>

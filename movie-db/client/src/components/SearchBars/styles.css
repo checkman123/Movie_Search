@@ -7,7 +7,8 @@
   }
   
   .searchTerm {
-    width: 20%;
+    width: 50%;
+    max-width: 50%;
     border: 3px solid #167380;
     border-right: none;
     padding: 6px;
@@ -15,11 +16,11 @@
     border-radius: 5px 0 0 5px;
     text-overflow: ellipsis;
     outline: none;
-    color: #c49e22;
+    color: #ef981c;
   }
   
   .searchTerm:focus{
-    color: #d89c19;
+    color: #5e4119;
     text-overflow: ellipsis;
   }
   
@@ -27,7 +28,7 @@
     width: 40px;
     height: 100%;
     border: 1px solid #105aa0;
-    background: #cc9f0dc7;
+    background:  #ef981c;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -38,4 +39,17 @@
     align-items: center;
   }
   
- 
+  .searchButton:hover {
+    width: 40px;
+    height: 100%;
+    border: 1px solid #105aa0;
+    background: #dba613c7;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
