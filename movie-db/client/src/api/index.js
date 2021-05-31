@@ -27,6 +27,7 @@ export const deleteMovie = (id) => API.delete(`/movies/${id}`);
 export const updateMovie = (id, updatedMovie) => API.patch(`/movies/${id}`, updatedMovie);
 
 export const fetchMovieLists = (id) => API.get(`/movie-lists/${id}`);
+export const fetchMovieList = (id) => API.get(`/movie-lists/list/${id}`);
 export const createMovieList = (newMovieList) => API.post('/movie-lists', newMovieList);
 export const deleteMovieList = (id) => API.delete(`/movie-lists/${id}`);
 

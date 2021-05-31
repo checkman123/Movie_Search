@@ -1,6 +1,6 @@
 // ACTIONs AND API AND REDUCERS FOLDER GOES TOGETHER
 //import everything from actions as api
-import { FETCH_ALL_MOVIE_LISTS, CREATE_MOVIE_LIST, DELETE_MOVIE_LIST } from '../constants/actionTypes'
+import { FETCH_ALL_MOVIE_LISTS, CREATE_MOVIE_LIST, DELETE_MOVIE_LIST, FETCH_MOVIE_LIST } from '../constants/actionTypes'
 import * as api from '../api'; 
 
 // Action Creators
@@ -17,6 +17,16 @@ export const getMovieLists = (id) => async (dispatch) => {
     }
 }
 
+export const getMovieList = (id) => async (dispatch) => {
+    try{
+        // Get response from API
+        const { data } = await api.fetchMovieList(id);
+
+        dispatch ({type: FETCH_MOVIE_LIST, payload: data});
+    }catch(error){
+        console.log(error)
+    }
+}
 
 export const createMovieList = (movieList) => async (dispatch) => {
     try{

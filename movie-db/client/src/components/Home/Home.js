@@ -34,22 +34,26 @@ const Home = () => {
   //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const POPULAR_API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const UPCOMING_API_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
+  const TOP_RATED_API_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
       //states- input query, movies
       const [query, setQuery] = useState('');
       
       //create the state for movies, and update that state appropriate
       const [popularMovies, setPopularMovies] = useState([]);
       const [upComingMovies, setUpComingMovies] = useState([]);
+      const [topRatedMovies, setTopRatedMovies] = useState([]);
 
       const fetchData = async () => {
         try {
           const getPopular = axios.get(POPULAR_API_URL);
           const getUpcoming = axios.get(UPCOMING_API_URL);
-          axios.all([getPopular, getUpcoming]).then(
+          const getTopRated = axios.get(TOP_RATED_API_URL);
+          axios.all([getPopular, getUpcoming, getTopRated]).then(
             axios.spread((...allData) => {
               //console.log(allData);
               setPopularMovies(allData[0].data.results);
               setUpComingMovies(allData[1].data.results);
+              setTopRatedMovies(allData[2].data.results)
             })
           )
         } catch (error) {
@@ -64,6 +68,7 @@ const Home = () => {
   return (
     <div>
     <SearchBars/>
+
     <Typography className={classes.heading}variant="h5">Popular</Typography>
     <Swiper
       spaceBetween={5}
@@ -71,7 +76,6 @@ const Home = () => {
       navigation={true}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
-      pagination
     >
       <div className={classes.cardList}>
         {popularMovies.map(movie => (
@@ -87,14 +91,13 @@ const Home = () => {
     <MovieCard movie={movie}/>
     ))*/}
 
-    <Typography className={classes.heading}variant="h5">upcoming</Typography>
+    <Typography className={classes.heading}variant="h5">Upcoming</Typography>
     <Swiper
       spaceBetween={5}
       slidesPerView={4}
       navigation={true}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
-      pagination
     >
       <div className={classes.cardList}>
         {upComingMovies.map(movie => (
@@ -105,9 +108,25 @@ const Home = () => {
       </div> 
     </Swiper>
 
+    <Typography className={classes.heading}variant="h5">Top Rated</Typography>
+    <Swiper
+      spaceBetween={5}
+      slidesPerView={4}
+      navigation={true}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <div className={classes.cardList}>
+        {topRatedMovies.map(movie => (
+          <SwiperSlide>
+            <MovieCard movie={movie}/>
+          </SwiperSlide>
+        ))}
+      </div> 
+    </Swiper>
 
     <Footer/>
-
+    
     </div>
   );
 };

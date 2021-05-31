@@ -29,7 +29,7 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, firstName, lastName, profile_img, status } = req.body;
 
   try {
     const oldUser = await UserModel.findOne({ email });
@@ -38,7 +38,7 @@ export const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const result = await UserModel.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+    const result = await UserModel.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, profile_img, status });
 
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 

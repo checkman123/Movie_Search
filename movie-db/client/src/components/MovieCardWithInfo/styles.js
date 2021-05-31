@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     },
     info: {
       borderRadius: '0px 20px 20px 0px',
-      backgroundColor:'#1e1b26',
+      backgroundColor:'#404040',
       color: '#bfc4c9',
       padding: '2vw',
     },

@@ -26,7 +26,7 @@ const MovieCardWithInfo = ({movie}) => {
     <>
     <div className={classes.card}>    
 
-      <Link to={{
+      <Link className="link" to={{
       pathname: `/movie/${movie.movie_id}`,
       state: { movie },
       }}>
@@ -49,7 +49,7 @@ const MovieCardWithInfo = ({movie}) => {
             <Typography variant="h5">
               {movie.title}
             </Typography>
-            <Typography variant="h8">
+            <Typography >
               {date}
             </Typography>
 

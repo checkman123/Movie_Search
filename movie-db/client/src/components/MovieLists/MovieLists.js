@@ -21,7 +21,7 @@ const MovieLists = ({ setCurrentId }) => {
         // If there is no post then it will show a circle loading animation
         !user ?  <Typography className={classes.title} variant="h5" component="h2" gutterBottom>Please Sign in</Typography> :
         (!movieLists.length ? <CircularProgress /> : (
-            <Grid className = {classes.container} container alignItems="stretch" spacing={3}>
+            <Grid className = {classes.container} container alignItems="stretch" spacing={2}>
                 {
                     //.filter(movieList => movieList.user_list_id === user.result._id)
                     movieLists.map((movieList) => (

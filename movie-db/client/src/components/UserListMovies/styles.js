@@ -11,4 +11,11 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  description: {
+    wordWrap:'break-word',
+    
+  }
+
+
+  
 }));

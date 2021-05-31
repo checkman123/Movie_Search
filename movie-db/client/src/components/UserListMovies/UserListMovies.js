@@ -8,10 +8,12 @@ import { useSelector } from 'react-redux';
 import MovieCardWithInfo from "../MovieCardWithInfo/MovieCardWithInfo"
 import VideoEmbed from "../VideoEmbed/VideoEmbed"
 import { getListOfMovies } from '../../actions/listOfMovies';
+import { getMovieList } from '../../actions/movieLists'
 
 import useStyles from './styles';
 
 const UserListMovies = (props) => {
+  const [share, setShare] = useState(false);
   const user = JSON.parse(localStorage.getItem('profile'));
   var userId;
 
@@ -25,21 +27,46 @@ const UserListMovies = (props) => {
   }  
   
   const listOfMovies = useSelector((state) => state.listOfMovies);
+  const movieList = useSelector((state) => state.movieList);
 
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const listID = window.location.pathname.replace('/movie-list/','');
+  var list;
+
   useEffect(() =>{
-    dispatch(getListOfMovies(props.location.state.list._id));
+    dispatch(getListOfMovies(listID));
+    dispatch(getMovieList(listID));
   }, [dispatch])
 
-  console.log("props.location.state.list");
-  console.log(props.location.state.list);
+
+  console.log("listID");
+  console.log(listID);
   console.log(listOfMovies);
+  console.log(movieList);
   //const movies = props.location.state.list;
+
+  //Copy Current Url
+  function copy() {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setShare(true);
+  }
 
   return (
     <>
+      <Typography className={classes.title} variant="h4">List: {movieList.title}</Typography>
+      <p className={classes.description}>{movieList.description !== "" ? "Description: " + movieList.description : ""}</p>
+      <Button className={classes.addBtn} variant="contained" color="primary" size="large" type="submit" onClick={copy} fullWidth>
+        {!share ? "Share link" : "Copied!"}
+      </Button>
+      <br/>
+      <br/>
       {listOfMovies.map(movie => (
           <MovieCardWithInfo movie={movie}/>
       ))}

@@ -3,8 +3,8 @@ import { Container, AppBar, Typography, Grow, Grid, Box } from "@material-ui/cor
 import { BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 
 import Home from './components/Home/Home'
-import Example from "./components/Example/Example";
-import NavBar from "./components/Navigation/NavBar";
+import Posts from "./components/Example/Example";
+import Navigation from "./components/Navigation/Navigation";
 import ExampleNav from "./components/Navigation/ExampleNav";
 import Auth from "./components/Auth/Auth";
 import MovieInfo from "./components/MovieInfo/MovieInfo";
@@ -13,17 +13,20 @@ import UserListMovies from "./components/UserListMovies/UserListMovies";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Search from "./components/Search/Search";
 import About from "./components/About/About";
+import ProfileEditor from "./components/ProfileEditor/ProfileEditor"
+
+
 
 const App = () => {
 
   return (
     <BrowserRouter>
       <Box>
-        <NavBar/>
+        <Navigation/>
         <Container maxwidth="lg">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/example" component={Example} />
+            <Route path="/posts" component={Posts} />
             <Route path="/auth" component={Auth} />
             <Route path="/movie" component={MovieInfo} />
             <Route path="/movie-lists" component={UserMovieList} />
@@ -31,6 +34,7 @@ const App = () => {
             <Route path="/user-info" component={UserProfile} />
             <Route path="/search" component={Search} />
             <Route path="/about" component={About}/>
+            <Route path="/profile-editor" component={ProfileEditor}/>
           </Switch>
         </Container>
         
