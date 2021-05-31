@@ -44,7 +44,7 @@ export const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     const handleChange = (e) =>{
-        setFormData({... formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
+        setFormData({...formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
         console.log(formData);
     }
 
@@ -100,7 +100,7 @@ export const Auth = () => {
                             <div className={classes.hidden}>
                                 <Input name="confirmPassword"  label="Repeat Password" handleChange={handleChange} type="password"/> 
                                 <br/>
-                                <FileBase  name="profiele_img" type="file" multiple={false} onDone={({ base64 }) => handleImage(formData, base64)} /> 
+                                <FileBase  name="profile_img" type="file" multiple={false} onDone={({ base64 }) => handleImage(formData, base64)} /> 
                                
                             </div>
 
