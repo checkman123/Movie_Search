@@ -7,18 +7,20 @@
   }
   
   .searchTerm {
-    width: 30%;
+    width: 20%;
     border: 3px solid #167380;
     border-right: none;
     padding: 6px;
     height: 23px;
     border-radius: 5px 0 0 5px;
+    text-overflow: ellipsis;
     outline: none;
     color: #c49e22;
   }
   
   .searchTerm:focus{
     color: #d89c19;
+    text-overflow: ellipsis;
   }
   
   .searchButton {
