@@ -11,6 +11,9 @@ export default makeStyles((theme) => ({
       color: '#bfc4c9',
       padding: '2vw',
     },
+    deleteButton: {
+      position: 'relative',
+    },
 
 
 
