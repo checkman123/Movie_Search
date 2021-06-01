@@ -217,7 +217,7 @@ const MovieInfo = (props) => {
 
           <br/>
         {
-          similarMovies ? 
+          similarMovies.length > 0 ? 
           <>
             <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
             <Swiper
