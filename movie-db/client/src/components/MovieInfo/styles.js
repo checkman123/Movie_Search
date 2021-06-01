@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
       color: 'white'
     },    
     heading: {
-      color: 'rgba(0,183,255, 1)',
+      color: '#ef981c',
       marginBottom: '15px',
       display: 'block'
     },

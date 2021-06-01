@@ -73,14 +73,14 @@ const MovieCardWithInfo = ({movie, id}) => {
                 </Link>
               </Grid>
               <Grid item xs={1}>
-                {
+                {/* Cannot Figure out how to make it work
                   (isMovieList && (userId)) ?
                   //Check for name so only user who created it can delete it and if it is from movielist
                   //onClick={() => dispatch(deleteMovieList(list._id))}
                     <Button size="small" color="secondary" className={classes.deleteButton}>
                       <DeleteIcon fontSize="small" />
                     </Button>
-                  : ""
+                  : ""*/
                 }
               </Grid>
             </Grid>

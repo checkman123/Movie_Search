@@ -165,14 +165,14 @@ const MovieInfo = (props) => {
       setButtonPopup(true);
     }
 
-    if (similarMovies.total_results == 0) {
+    if (similarMovies.total_results === 0) {
       useStyles.heading.display = 'none';
     } 
 
   return (
     <>
       <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists} movieInfo={movieInfo}/>
-      
+
       <div className="mCard" key={movie.id}>
           <img className="card-image"
               src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movieInfo.poster_path}`}
@@ -182,7 +182,7 @@ const MovieInfo = (props) => {
               height= '400'
               />
           <div className="card-content">
-              <h3 className="card-title"> &nbsp; {movieInfo.title}</h3>
+              <h2 className="card-title"> &nbsp; {movieInfo.title}</h2>
               <p><small> &nbsp; RELEASE DATE: {movieInfo.release_date}</small></p>
               <p><small> &nbsp; RATING: {movieInfo.vote_average} out of 10</small></p>
               <p><small> &nbsp; GENRE: &nbsp;         
@@ -199,29 +199,46 @@ const MovieInfo = (props) => {
         <Button className={classes.addBtn} variant="contained" color="primary" size="large" type="submit" onClick={handleSubmit} fullWidth>ADD TO WATCHLIST</Button>
         <p></p>
       </div>
-      <Typography className={classes.heading}variant="h5">Videos</Typography>
-      <div className="card-list">
-        {videos.map(video => (
-            <VideoEmbed video={video}/>
-        ))}
-      </div> 
 
-      <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
-      <Swiper
-        spaceBetween={5}
-        slidesPerView={4}
-        navigation={true}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-     >
-      <div className={classes.cardList}>
-        {similarMovies.map(movie => (
-          <SwiperSlide>
-            <MovieCard movie={movie}/>
-          </SwiperSlide>
-        ))}
-      </div> 
-      </Swiper>
+      {
+        videos ? 
+        <>
+          <Typography className={classes.heading}variant="h5">Videos</Typography>
+          <div className="card-list">
+            {/*Multiple videos
+            videos.map(video => (
+                <VideoEmbed video={video}/>
+            ))*/}
+
+            <VideoEmbed video={videos[0]}/>
+          </div> 
+        </> : ""
+
+      }
+
+          <br/>
+        {
+          similarMovies ? 
+          <>
+            <Typography className={classes.heading}variant="h5">Similar Movies</Typography>
+            <Swiper
+              spaceBetween={5}
+              slidesPerView={4}
+              navigation={true}
+              onSlideChange={() => console.log('slide change')}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+            <div className={classes.cardList}>
+              {similarMovies.map(movie => (
+                <SwiperSlide>
+                  <MovieCard movie={movie}/>
+                </SwiperSlide>
+              ))}
+            </div> 
+            </Swiper> 
+          </> : ""
+        }
+
     </>
   );
 };
