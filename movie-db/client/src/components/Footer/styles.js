@@ -7,9 +7,11 @@ export default makeStyles((theme) => ({
     image: {
       marginLeft: '15px',
     },
-    background: {
+    footer: {
       backgroundColor: 'rgba(96,65,194, 0.2)',
+      height: '250px'
     },
+
   
     [theme.breakpoints.down('sm')] : {
       /* for phone version */
