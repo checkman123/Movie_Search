@@ -24,6 +24,7 @@ import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
 
 import useStyles from './styles';
+import './MovieInfo.css'
 
 const MovieInfo = (props) => {
   const classes = useStyles();
@@ -154,30 +155,39 @@ const MovieInfo = (props) => {
       setButtonPopup(true);
     }
 
-     
+    if (similarMovies.total_results == 0) {
+      useStyles.heading.display = 'none';
+    } 
+
   return (
     <>
       <PopUpList trigger={buttonPopup} setTrigger={setButtonPopup} listExist={listExist} movieLists={movieLists} movieInfo={movieInfo}/>
       
-      <div className={classes.card} key={movie.id}>
+      <div className="mCard" key={movie.id}>
           <img className="card-image"
               src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movieInfo.poster_path}`}
               alt={movieInfo.title + ' poster'}
+              borderRadius= '20'
+              width= '250'
+              height= '400'
               />
           <div className="card-content">
-              <h3 className="card-title">{movieInfo.title}</h3>
-              <p><small>RELEASE DATE: {movieInfo.release_date}</small></p>
-              <p><small>RATING: {movieInfo.vote_average}</small></p>
-              <p><small>GENRE: &nbsp;         
+              <h3 className="card-title"> &nbsp; {movieInfo.title}</h3>
+              <p><small> &nbsp; RELEASE DATE: {movieInfo.release_date}</small></p>
+              <p><small> &nbsp; RATING: {movieInfo.vote_average} out of 10</small></p>
+              <p><small> &nbsp; GENRE: &nbsp;         
                 {
                   movieInfo?.genres?.map(function(genre, index) {
                     return <span key={index}>{ (index ? ', ' : '') + genre.name }</span>;
                   }) 
                 }
               </small></p>
-              <p className="card-desc">{movieInfo.overview}</p>
           </div>
-          <Button className={classes.addBtn} variant="contained" color="primary" size="large" type="submit" onClick={handleSubmit} fullWidth>ADD TO WATCHLIST</Button>
+      </div>
+      <div>
+        <p className="card-desc">{movieInfo.overview}</p>
+        <Button className={classes.addBtn} variant="contained" color="primary" size="large" type="submit" onClick={handleSubmit} fullWidth>ADD TO WATCHLIST</Button>
+        <p></p>
       </div>
       <Typography className={classes.heading}variant="h5">Videos</Typography>
       <div className="card-list">

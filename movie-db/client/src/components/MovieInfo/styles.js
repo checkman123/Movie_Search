@@ -8,7 +8,8 @@ export default makeStyles((theme) => ({
     },    
     heading: {
       color: 'rgba(0,183,255, 1)',
-      marginBottom: '15px'
+      marginBottom: '15px',
+      display: 'block'
     },
     addBtn: {
       position: 'inherit'

@@ -1,4 +1,5 @@
 import React from "react";
+import './VideoEmbed.css'
 
 const VideoEmbed = ({ video }) => {
 
@@ -7,8 +8,8 @@ const VideoEmbed = ({ video }) => {
         video.site === "Youtube" ?  <div></div> :     
         <div className="video-responsive">
         <iframe
-          width="853"
-          height="480"
+          width='560'
+          height='315'
           src={`https://www.youtube.com/embed/${video.key}`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

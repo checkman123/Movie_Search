@@ -1,0 +1,5 @@
+.mCard {
+    display: flex;
+    align-items: top;
+    flex-direction: row;
+}
