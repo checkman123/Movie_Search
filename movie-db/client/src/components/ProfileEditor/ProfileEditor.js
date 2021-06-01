@@ -1,18 +1,17 @@
-import React, {Component, useEffect} from 'react';
-import { Grid, Typography, Button, TextField, InputAdornment } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useState, useEffect, useCallback} from 'react';
+import { Grid, Typography, Button, Paper, Container, TextField } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import FileBase from 'react-file-base64';
+import { updateUser } from '../../actions/userInfo'
+
 import useStyles from './styles';
-import { AccountCircle, Email, Lock } from '@material-ui/icons';
 
-import {getUsers, getUser} from '../../actions/userInfo'
-import './ProfileEditor.css'
-
-const ProfileEditor = () => {
+const ProfileEditor = (props) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const userInfo = useSelector((state) => state.userInfo);
     const classes = useStyles();
-
     var userId;
 
     //Check if user is login by us or Google
@@ -24,98 +23,65 @@ const ProfileEditor = () => {
       }
     }
 
-    const dispatch = useDispatch();
-  
-    useEffect(() =>{
-      dispatch(getUsers());
-      dispatch(getUser(userId));
-    }, [dispatch])
+    const initialState = { firstName: userInfo.name.split(' ')[0],
+                       lastName: userInfo.name.split(' ')[1],
+                       email: userInfo.email,
+                       status: userInfo.status,
+                       profile_img: userInfo.profile_img}
 
-    console.log(userInfo);
+    const [formData, setFormData] = useState(initialState);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleSubmit = (e) =>{
+        e.preventDefault(); //Dont reload
+
+        console.log("Submit");
+        console.log(formData);
+        
+        //UPDATE
+        dispatch(updateUser(userId, {...formData}));
+        history.push('/user-info');
+    }
+
+    const handleChange = (e) =>{
+        setFormData({...formData, [e.target.name]: e.target.value}); //change initial input into something else (spread formData and input value in)
+        console.log(formData);
+    }
+
+    const handleImage = useCallback((formData, base64) => {
+      setFormData({ ...formData, profile_img: base64 })
+    }, [setFormData]);
+
     return (
-        <div>
-            <Grid container align = "left" allignItems="center">
-                <Grid item xs = {2} spacing = {3}>
-                    <Typography variant="h5">
-                      Name:
-                    </Typography>
-                </Grid>
-                <Grid item xs = {7} spacing = {3}>
-                  <TextField
-                    label="First Name"
-                    style = {{width: '700px'}} 
-                    InputProps={{
-                      startAdornment:(
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                        
-                      ), style: {color:'darkgray'}
-                    }}
-                    InputLabelProps={{style: { color: '#BFC4C9' }}}          
-                  /> 
-                </Grid>
-                <Grid item xs = {3} spacing = {3}>
-                  <TextField
-                    label="Last Name" 
-                    fullWidth
-                    InputProps={{
-                      startAdornment:(
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                      ), style: {color:'darkgray'}
-                    }}
-                    InputLabelProps={{style: { color: '#BFC4C9' }, width: 50}}          
-                  />
-                </Grid>
-                <Grid item xs = {2} spacing = {3}>
-                    <Typography variant="h5">
-                      Password:
-                    </Typography>
-                </Grid>
-                <Grid item xs = {10}>
-                  <TextField
-                    label="Password"
-                    fullWidth 
-                    InputProps={{
-                      startAdornment:(
-                        <InputAdornment position="start">
-                          <Lock />
-                        </InputAdornment>
-                      ), style: {color:'darkgray'}
-                    }}
-                    InputLabelProps={{style: { color: '#BFC4C9' }, width: 50}}          
-                  />
-                </Grid>
-                <Grid item xs = {2} spacing = {3}>
-                    <Typography variant="h5">
-                      Email:
-                    </Typography>
-                </Grid>
-                <Grid item xs = {10} spacing = {3}>
-                  <TextField
-                    label="Email"
-                     fullWidth
-                    InputProps={{
-                      startAdornment:(
-                        <InputAdornment position="start">
-                          <Email />
-                        </InputAdornment>
-                      ), style: {color:'darkgray'}
-                    }}
-                    InputLabelProps={{style: { color: '#BFC4C9' }, width: 50}}          
-                  />
-                </Grid>
-                <Grid item xs ={6} spacing = {3}>
-                  <Button variant="contained" color="primary">Submit</Button>
-                </Grid>
-                <Grid item xs ={6} spacing = {3}>
-                  <Button variant="contained">Cancel</Button>
-                </Grid>
-            </Grid>
-            
-        </div>
+          <Container component="main" maxWidth="xs">
+            <Paper className={classes.paper} elevation={3}>
+                <Typography variant="h5" color="textPrimary">Edit Your Profile</Typography>
+                <form className={classes.form} onSubmit={handleSubmit}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6}>
+                        <TextField name="firstName" label="First Name" value={formData.firstName} onChange={handleChange} variant="outlined" required fullWidth autoFocus={true} />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField name="lastName" label="Last Name" value={formData.lastName} onChange={handleChange} variant="outlined" required fullWidth/>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField name="email" label="Email" value={formData.email} onChange={handleChange} variant="outlined" required fullWidth/>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField name="status" label="Status" value={formData.status} onChange={handleChange} variant="outlined" fullWidth/>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <FileBase type="file" multiple={false} onDone={({ base64 }) => handleImage(formData, base64)}/>
+                        <p className={classes.fileWarning}>(Please wait a few minutes for updated profile picture)</p>
+                      </Grid>
+                    </Grid>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        Edit
+                    </Button>
+                </form>
+            </Paper>
+        </Container>
     );
 }
 

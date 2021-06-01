@@ -11,6 +11,7 @@ import { createMovie } from '../../actions/movies';
 import { getMovieLists } from '../../actions/movieLists'
 import MovieListForm from "../MovieListForm/MovieListForm"
 import PopUpList from "../PopUpList/PopUpList"
+import noImageAvailable from '../../Images/noimageavailable.png'
 
 //Carousel from Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,6 +30,8 @@ import './MovieInfo.css'
 const MovieInfo = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const imageLink = "https://image.tmdb.org/t/p/w185_and_h278_bestv2/"
 
   const user = JSON.parse(localStorage.getItem('profile'));
   var userId;
@@ -88,6 +91,13 @@ const MovieInfo = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+    window.scrollTo(0, 0);
+  }, [movie]);
+
+  
 
   //Get user movie lists
   const movieLists = useSelector((state) => state.movieLists);
@@ -203,7 +213,6 @@ const MovieInfo = (props) => {
         navigation={true}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        pagination
      >
       <div className={classes.cardList}>
         {similarMovies.map(movie => (

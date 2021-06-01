@@ -29,4 +29,17 @@ export const getUser = async (req, res) => {
     }
   }
 
+  export const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { firstName, lastName, email, profile_img, status } = req.body;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
+
+    const updatedUser = { name: `${firstName} ${lastName}`, email, profile_img, status };
+
+    await UserModel.findByIdAndUpdate(id, updatedUser, { new: true });
+
+    res.json(updatedUser);
+}
+
 export default router;

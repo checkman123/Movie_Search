@@ -21,11 +21,23 @@ const SearchBars = () => {
           history.push({
             pathname: `/search/${query}`,
             state: { query }
-        });
+          });
 
         //reload the page
         window.location.reload(false);
         }
+      }
+
+      const searchButton = (e) => {
+        setQuery(e.target.value);
+
+        history.push({
+          pathname: `/search/${query}`,
+          state: { query }
+        });
+
+        //reload the page
+        window.location.reload(false);
       }
 
   return (
@@ -34,13 +46,12 @@ const SearchBars = () => {
         <div class="search">
           <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange = {event => setQuery(event.target.value)} onKeyPress={handleKeyPress} />
 
-          <Link to={{ pathname: `/search/`, state: { query },}}>
-            <button type="submit" class="searchButton" > 
+          <Link to={{ pathname: `/search/${query}`, state: { query },}}>
+            <button type="submit" class="searchButton" onClick={searchButton}> 
               <SearchIcon/>
             </button>
           </Link>   
         </div> 
-  
      </div>
 
   );

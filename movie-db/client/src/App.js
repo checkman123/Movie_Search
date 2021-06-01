@@ -14,6 +14,8 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import Search from "./components/Search/Search";
 import About from "./components/About/About";
 import ProfileEditor from "./components/ProfileEditor/ProfileEditor"
+import PrivacyPolicy from './components/Privacy/PrivacyPolicy';
+import TermsOfServices from './components/Terms/TermsOfServices';
 
 
 
@@ -35,6 +37,9 @@ const App = () => {
             <Route path="/search" component={Search} />
             <Route path="/about" component={About}/>
             <Route path="/profile-editor" component={ProfileEditor}/>
+            <Route path="/privacy" component={PrivacyPolicy}/>
+            <Route path="/terms" component={TermsOfServices}/>
+            
           </Switch>
         </Container>
         

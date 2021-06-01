@@ -4,6 +4,15 @@
     
 }
 
+@media screen and (max-width: 414px) {
+    .navbar {
+        position:relative;
+        left: 10px;
+        height: var(--nav-size);
+        padding: 0;
+    }
+  }
+
 .navBgColor {
     background-color: var(--bg);
     border-bottom: var(--border);
