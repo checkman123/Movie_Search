@@ -25,13 +25,17 @@ app.use("/movie-lists", movieListRoutes);
 app.use("/user-info", userInfoRoutes);
 app.use("/movie-list", listOfMoviesRoutes);
 
+app.get('/', (req, res) => {
+  res.send("Hello to Movie Stack API");
+});
+
 
 // https;//www.mongodb.com/cloud/atlas
 
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect('mongodb+srv://safe:safe123@cluster0.xmpmy.mongodb.net/<dbname>?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )

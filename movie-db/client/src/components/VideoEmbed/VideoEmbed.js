@@ -3,6 +3,7 @@ import './VideoEmbed.css'
 
 const VideoEmbed = ({ video }) => {
 
+  console.log(video);
     return (
         // if video isnt from Youtube, dont show
         video.site === "Youtube" ?  <div></div> :     
