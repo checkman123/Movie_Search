@@ -201,16 +201,15 @@ const MovieInfo = (props) => {
       </div>
 
       {
+        
         videos ? 
         <>
           <Typography className={classes.heading}variant="h5">Videos</Typography>
           <div className="card-list">
-            {/*Multiple videos
+            {
             videos.map(video => (
                 <VideoEmbed video={video}/>
-            ))*/}
-
-            <VideoEmbed video={videos[0]}/>
+            ))}
           </div> 
         </> : ""
 
