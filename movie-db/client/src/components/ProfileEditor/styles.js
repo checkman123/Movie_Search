@@ -30,4 +30,8 @@ export default makeStyles((theme) => ({
   hidden: {
     padding: '8px'
   },
+  fileWarning:{
+    fontSize: '12px',
+    color: 'black'
+  }
 }));

@@ -16,3 +16,21 @@
   .actionDiv {
     text-align: center;
   }
+
+  .label label{
+    color: #bfc4c9 !important;
+  }
+
+  .label input{
+    color: #bfc4c9 !important;
+  }
+
+  .label{
+    pointer-events:none;
+  }
+
+  .edit {
+    position:absolute;
+    top: 7vw;
+    left: 84vw;
+  }

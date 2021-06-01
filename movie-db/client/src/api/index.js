@@ -35,3 +35,4 @@ export const fetchListOfMovies = (id) => API.get(`/movie-list/${id}`);
 
 export const fetchUsers = () => API.get('/user-info');
 export const fetchUser = (id) => API.get(`/user-info/${id}`);
+export const updateUser = (id, updatedUser) => API.patch(`/user-info/${id}`, updatedUser);

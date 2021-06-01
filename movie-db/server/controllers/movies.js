@@ -36,13 +36,13 @@ export const updateMovie = async (req, res) => {
     const { id } = req.params;
     const { movie_list_id } = req.body;
 
-    console.log(req);
+    //console.log(req);
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No movie with id: ${id}`);
 
     const updatedMovie = { movie_list_id };
 
-    console.log(updatedMovie);
+    //console.log(updatedMovie);
 
     await Movie.findByIdAndUpdate(id, updatedMovie, { new: true });
 

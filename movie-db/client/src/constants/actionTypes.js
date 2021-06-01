@@ -22,3 +22,4 @@ export const FETCH_LIST_OF_MOVIES = 'FETCH_LIST_OF_MOVIES';
 
 export const FETCH_ALL_USERS ='FETCH_ALL_USERS';
 export const FETCH_USER ='FETCH_USER';
+export const UPDATE_USER ='UPDATE_USER';
