@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Container, Typography, withTheme } from "@material-ui/core";
 
 import useStyles from './styles';
-import { grey } from '@material-ui/core/colors';
 
 const About = () => {
   const classes = useStyles();
@@ -24,7 +23,7 @@ const About = () => {
                 <Typography variant="h5" align="left" color="darkgrey">Contact us</Typography>
             </div>
             <Typography variant="h5" align="center" color="darkgrey" paragraph>
-                If you have any questions or sugguestion for improvement, you can contact us at sirijirakars@spu.edu (lead developer) <a href="mailto:sirijirakars@spu.edu"> here</a>. 
+                If you have any questions or sugguestion for improvement, you can contact us at sirijirakars@spu.edu (lead developer) <a href="mailto:sirijirakars@spu.edu" style={{color:'blue'}}> here</a>. 
             </Typography>
             
         </footer>
