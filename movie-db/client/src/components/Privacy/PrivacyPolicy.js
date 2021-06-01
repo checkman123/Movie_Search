@@ -52,33 +52,33 @@ const PrivacyPolicy = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell className="tableHead">Item</TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>Item</TableCell>
                             <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>Types of Data</TableCell>
-                            <TableCell className="tableHead">Purpose</TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>Purpose</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow className="tableBody">
-                            <TableCell className="tableBody">Basic</TableCell>
-                            <TableCell className="tableBody">
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>Basic</TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>
                                  <ul>
                                     <li>First and Last Name</li>
                                     <li>Email</li>
                                 </ul>
                             </TableCell>
-                            <TableCell className="tableBody">
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>
                                 To help us develop, deliver, and improve our services. As well as deliver important notices.
                             </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>Data related to your account and use of service</TableCell>
-                            <TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>Data related to your account and use of service</TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>
                                 <ul>
                                     <li>Registered email address</li>
                                     <li>Password</li>
                                 </ul>
                             </TableCell>
-                            <TableCell>
+                            <TableCell style={{fontSize:'15pt', color:'darkgrey', fontWeight:'bold'}}>
                                 To audit and analyze data for technical administration, improving our services, and for end-user communications.
                             </TableCell>
                         </TableRow>
