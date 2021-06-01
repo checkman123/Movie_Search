@@ -33,8 +33,8 @@ const Search = (props) => {
   const API_KEY = 'ee80e57743f7d18272a3bf37bab8828f';
   //const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
-  //states- input query, movies
-  const [query, setQuery] = useState(props.location.state.query);
+  //states- input query, movies. take the pathurl and use it
+  const [query, setQuery] = useState(window.location.pathname.replace('/search/','').replace('#', '').replace('%20', ' '));
 
   const SEARCH_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`;
   
