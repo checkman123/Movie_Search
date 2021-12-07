@@ -61,3 +61,5 @@ Type: ```npm run start ``` to start the client
 You should be able to access the web app now with http://localhost:3000/
 
 If user wants to deploy it, they can use Heroku and Netlify
+
+**Note to self: If posts and user info doesnt work, mongoDB atlas has been paused. Go start it up again.
