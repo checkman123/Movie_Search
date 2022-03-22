@@ -1,9 +1,13 @@
 # Product Documentation
 
 ●	Developed with MERN Stack ( MongoDB Atlas, Express, React, Node )
+
 ●	Fetch data from TMDB API for popular, upcoming, and top-rated movies
+
 ●	Users can create their own account or login via Google Sign-in
+
 ●	Users can search and bookmark movies into their personal list
+
 
 # Movie stack: 
 1. Showing popular, upcoming and top rated movies on Home page. 
