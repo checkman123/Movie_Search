@@ -1,11 +1,11 @@
-#Product Documentation
+# Product Documentation
 
 ●	Developed with MERN Stack ( MongoDB Atlas, Express, React, Node )
 ●	Fetch data from TMDB API for popular, upcoming, and top-rated movies
 ●	Users can create their own account or login via Google Sign-in
 ●	Users can search and bookmark movies into their personal list
 
-#Movie stack: 
+# Movie stack: 
 1. Showing popular, upcoming and top rated movies on Home page. 
 2. Allow user to create his own accounts
 3. View and display user profile
@@ -19,7 +19,7 @@
 
 
 
-#Known bugs: 
+# Known bugs: 
 Trailer: If the selected movie does not have any trailers available, the site still shows the Video option.
 Edit profile button is outside the container
 User cannot delete movie in the list
@@ -27,12 +27,12 @@ Search bars can not search by genre, actors, only they can search by movie names
 
 
 
-#Requirements
+# Requirements
 - Node.js
 - Code editor such as Visual Code
 - Heroku and Netlify for online deployment
 
-#User Manual
+# User Manual
 (Online)
 Access the web via https://spu-movie-stack.netlify.app/
 
